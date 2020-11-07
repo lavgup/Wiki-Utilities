@@ -2,6 +2,7 @@ const Util = require('./Util');
 const { join } = require('path');
 const Command = require('./Command');
 const { Intents: { FLAGS } } =  require('discord.js');
+const MediaWikiJS = require('@sidemen19/mediawiki.js');
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo');
 
 class Client extends AkairoClient {
@@ -12,12 +13,11 @@ class Client extends AkairoClient {
                 disableMentions: 'everyone',
                 partials: [
                     'MESSAGE',
+                    'USER',
                     'REACTION'
                 ],
                 ws: {
                     intents: [
-                        // Reactions don't work without this intent?
-                        // Tested it multiple times, hope this is fixed soon
                         FLAGS.GUILDS,
                         FLAGS.GUILD_MESSAGES,
                         FLAGS.GUILD_MESSAGE_REACTIONS
@@ -57,6 +57,13 @@ class Client extends AkairoClient {
         this.inhibitorHandler = new InhibitorHandler(this, { directory: dir('inhibitors') });
 
         this.util = new Util(this);
+
+        this.bot = new MediaWikiJS({
+            server: config.wiki.url,
+            path: '',
+            botUsername: config.wiki.credentials.username,
+            botPassword: config.wiki.credentials.password
+        });
 
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
             if (this.config.wiki.user_map.enabled

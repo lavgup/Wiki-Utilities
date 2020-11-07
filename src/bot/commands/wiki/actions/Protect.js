@@ -3,10 +3,7 @@ const Action = require('./Action');
 class ProtectAction extends Action {
     constructor(data) {
         super(data);
-
         this.message = data.message;
-        this.client = this.message.client;
-
         this.args = data.args;
     }
 

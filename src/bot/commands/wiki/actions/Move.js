@@ -3,7 +3,6 @@ const Action = require('./Action');
 class MoveAction extends Action {
     constructor(data) {
         super(data);
-
         this.message = data.message;
         this.args = data.args;
     }
@@ -12,7 +11,7 @@ class MoveAction extends Action {
         const initMessage = await this.message.channel.send('Moving page...');
 
         try {
-            this.bot.move({
+            await this.bot.move({
                 from: this.args.old,
                 to: this.args.new,
                 reason: this.args.reason

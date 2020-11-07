@@ -2,10 +2,7 @@ const Action = require('./Action');
 
 class DeleteAction extends Action {
     constructor(data) {
-        super(data, {
-            needsRole: true,
-            needsCredentials: true
-        });
+        super(data);
         this.message = data.message;
 
         this.args = data.args;

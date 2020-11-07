@@ -3,10 +3,7 @@ const { stripIndents } = require('common-tags');
 
 class CategoryAction extends Action {
     constructor(data) {
-        super(data, {
-            needsRole: false,
-            needsCredentials: false
-        });
+        super(data);
         this.message = data.message;
         this.client = this.message.client;
 

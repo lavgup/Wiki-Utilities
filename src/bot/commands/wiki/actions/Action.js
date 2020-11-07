@@ -1,27 +1,18 @@
-const MediaWikiJS = require('@sidemen19/mediawiki.js');
-
 class Action {
     constructor(data) {
         this.message = data.message;
-        this.config = this.message.client.config.wiki;
+        this.client = this.message.client;
+
+        this.config = this.client.config.wiki;
+        this.bot = this.client.bot;
     }
 
     async commit() {
         try {
-            this.initBot();
             await this.exec();
         } catch (err) {
             return this.message.util.send(err.message);
         }
-    }
-
-    initBot() {
-        return this.bot = new MediaWikiJS({
-            server: this.config.url,
-            path: '',
-            botUsername: this.config.credentials.username,
-            botPassword: this.config.credentials.password
-        });
     }
 
     exec() {
