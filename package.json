@@ -1,0 +1,39 @@
+{
+  "name": "wiki-utilities",
+  "version": "1.0.0",
+  "description": "Discord bot for taking administrative actions on a Fandom wiki through Discord.",
+  "main": "src/bot/index.js",
+  "scripts": {
+    "start": "node .",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.x",
+    "pnpm": ">=3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidemen19/Wiki-Utilities.git"
+  },
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "bot",
+    "wiki",
+    "fandom",
+    "mediawiki"
+  ],
+  "author": "Sidemen19",
+  "license": "MIT",
+  "dependencies": {
+    "@sidemen19/mediawiki.js": "^1.0.0",
+    "common-tags": "^1.8.0",
+    "discord-akairo": "^8.1.0",
+    "discord.js": "^12.4.1",
+    "got": "^11.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1"
+  }
+}

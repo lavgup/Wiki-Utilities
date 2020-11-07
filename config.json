@@ -1,0 +1,27 @@
+{
+  "token": "",
+  "prefixes": ["wu!"],
+  "owners": [""],
+  "wiki": {
+    "url": "",
+    "allowed_roles": [""],
+    "blacklisted_users": [],
+    "rcgcdw_extension": {
+      "enabled": false,
+      "channel_id": "",
+      "emojis": {
+        "delete": "\uD83C\uDDE9",
+        "revert": "\uD83C\uDDF7",
+        "block": "\uD83C\uDDE7"
+      }
+    },
+    "user_map": {
+      "enabled": true,
+      "": ""
+    },
+    "credentials": {
+      "username": "",
+      "password": ""
+    }
+  }
+}
