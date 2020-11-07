@@ -7,14 +7,13 @@ class WikiActionInhibitor extends Inhibitor {
             reason: 'wikiAction'
         });
 
-        this.map = {
+        this.commandMap = {
             block: { needsRole: true, needsCredentials: true },
             category: { needsRole: false, needsCredentials: false },
             delete: { needsRole: true, needsCredentials: true },
             edit: { needsRole: true, needsCredentials: true },
             move: { needsRole: true, needsCredentials: true },
             protect: { needsRole: true, needsCredentials: true },
-            report: { needsRole: false, needsCredentials: false },
             undelete: { needsRole: true, needsCredentials: true }
         };
     }
@@ -26,7 +25,7 @@ class WikiActionInhibitor extends Inhibitor {
         const config = this.client.config.wiki;
         if (!config) return false;
 
-        const { needsRole, needsCredentials } = this.map[message.util.parsed.command.id];
+        const { needsRole, needsCredentials } = this.commandMap[message.util.parsed.command.id];
 
         if (needsRole === false && needsCredentials === false) return false;
 
@@ -46,10 +45,11 @@ class WikiActionInhibitor extends Inhibitor {
             config.allowed_roles.forEach(role => arr.push(message.guild.roles.cache.get(role)));
 
             if (!config.allowed_roles.some(role => message.member.roles.cache.has(role))) {
-                return message.util.send(stripIndents`
+                await message.util.send(stripIndents`
         You need one of the following roles to use this command.
         ${arr.map(role => `\`${role.name}\``).join('\n')}
         `);
+                return true;
             }
         }
 

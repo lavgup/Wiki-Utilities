@@ -1,7 +1,7 @@
 {
   "name": "wiki-utilities",
   "version": "1.0.0",
-  "description": "Discord bot for taking administrative actions on a Fandom wiki through Discord.",
+  "description": "Discord bot for taking administrative actions on a wiki through Discord.",
   "main": "src/bot/index.js",
   "scripts": {
     "start": "node .",

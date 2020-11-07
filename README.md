@@ -21,7 +21,7 @@ Integration with [RcGcDw](https://gitlab.com/piotrex43/RcGcDw/) (see [#110](http
     * Copy the Client ID.
     * Next, add a Bot (NOTE - you need to make the bot private (meaning only you can invite it to servers), by toggling the switch).
 
-3. Get the bot's token from the Bot page, copy it, and paste it into the `token` key of [config.json](config.json).
+3. Get the bot's token from the Bot page, copy it, and paste it into the value of `token` in [config.json](config.json).
 4. Invite Wiki Utilities to a server, by going to `https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=330816`.
 5. Install required dependencies, using `pnpm install` or `npm install`.
 6. Get the bot online by running `node .` in the root directory.
@@ -40,6 +40,7 @@ All configuration options are stored in [config.json](config.json).
         * `enabled`: Whether the extension is enabled or not.
         * `channel_id`: The channel ID of the webhook.
         * `emojis`: Any custom emojis to use when reacting, instead of the default regional indicators.
+    * `user_map` A map of user IDs to their wiki usernames. Example of this configuration would be `"441164156016787486": "Sidemen19"`. If this option is disabled or missing an ID, it will show the author's Discord tag, instead of their wiki username in edit summaries and reasons.
     * `credentials` (these must be obtained from `Special:BotPasswords`)
         * `username`: The username. (it is recommended to use a separate bot account, and give that admin rights, instead of your main account).
         * `password`: The password.
