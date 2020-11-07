@@ -11,6 +11,7 @@ class MessageReactionAddListener extends Listener {
 
     async exec(reaction, user) {
         const config = this.client.config.wiki;
+        this.config = config;
 
         // If server doesn't have RcGcDw extension enabled
         if (!config.rcgcdw_extension.enabled) return;
@@ -114,7 +115,7 @@ class MessageReactionAddListener extends Listener {
         if (!matches) return;
 
         const [, user] = matches;
-        if (user === 'YouTube Wiki Bot') return message.react('❌');
+        if (user === this.config.credentials.username.replace(/@.+/g, '')) return message.react('❌');
 
         try {
             await this.client.bot.login();

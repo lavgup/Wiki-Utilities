@@ -26,7 +26,7 @@ class HelpCommand extends Command {
             fields: [],
             color: 'YELLOW'
         };
-        const [prefix] = this.handler.prefix(message);
+        const [prefix] = this.handler.prefix;
 
         if (command) {
             embed.author.name = `${this.client.util.capitalise(command.aliases[0])} Command Help`;
