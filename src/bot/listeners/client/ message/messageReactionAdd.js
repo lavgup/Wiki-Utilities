@@ -23,7 +23,7 @@ class MessageReactionAddListener extends Listener {
         const { message, emoji } = reaction;
 
         // If reaction wasn't in RcGcDw logging channel
-        if (message.channel.id !== config.rcgcdw_extension.channel_id) return;
+        if (!config.rcgcdw_extension.channel_ids.includes(message.channel.id)) return;
 
         const member = await message.guild.members.fetch(user);
 
@@ -54,68 +54,106 @@ class MessageReactionAddListener extends Listener {
     }
 
     async handleDelete(message, reason) {
-        // Hacky method to filter out Discussion/message wall posts
-        // will probably get rid of this soon
-        if (message.content.includes('\'s Message Wall')
-        || message.content.includes('created a [reply]')
-        ) return;
+        let page;
 
-        const regex = /(?:created|edited|protected) \[(.[^\]]*)/;
+        if (message.content
+            && this.config.rcgcdw_extension.mode === 'compact'
+        ) {
+            page = this.parseCompactContent(message.content, 1);
+        }
 
-        const matches = regex.exec(message.content);
-        if (!matches) return;
+        if (message.embeds.length
+            && message.embeds[0].author.name !== this.config.rcgcdw_extension.wiki_name
+            && this.config.rcgcdw_extension.mode === 'embed'
+        ) {
+            // Remove stuff like (m +69), (-420) and ((N!) 0)
+            page = message.embeds[0].title.replace(/\((?:(?:m|\(N!\)) )?[+-]?\d*\)/, '').trim();
+        }
 
-        const [, title] = matches;
+        if (!page) return message.react('❌');
+
+        await message.react('774872461246070795');
 
         try {
             await this.client.bot.login();
 
             await this.client.bot.delete({
-                title: title,
+                title: page,
                 reason: reason
             });
 
-            return message.react('✅');
+            await message.react('✅');
         } catch (err) {
-            return message.react('❌');
+            await message.react('❌');
+        } finally {
+            await message.reactions.cache.get('774872461246070795').remove();
         }
     }
 
     async handleRevert(message, reason) {
-        const titleRegex = /edited \[(.[^\]]*)/;
-        const diffRegex = /diff=(.[^&]+)/;
+        let page;
 
-        const titleMatches = titleRegex.exec(message.content);
-        if (!titleMatches) return;
+        if (message.content
+        && this.config.rcgcdw_extension.mode === 'compact'
+        ) {
+            page = this.parseCompactContent(message.content, 1);
+        }
 
-        const [, title] = titleMatches;
+        if (message.embeds.length
+            && message.embeds[0].author.name !== this.config.rcgcdw_extension.wiki_name
+            && this.config.rcgcdw_extension.mode === 'embed'
+        ) {
+            // Remove stuff like (m +69), (-420) and ((N!) 0)
+            page = message.embeds[0].title.replace(/\((?:(?:m|\(N!\)) )?[+-]?\d*\)/, '').trim();
+            message.content = message.embeds[0].url;
+        }
+
+        const diffRegex = /diff=(\d*)/;
         const diffMatches = diffRegex.exec(message.content);
 
+        if (!diffMatches) return message.react('❌');
         const [, diff] = diffMatches;
+
+        await message.react('774872461246070795');
 
         try {
             await this.client.bot.login();
 
             await this.client.bot.undo({
-                title: title,
+                title: page,
                 revision: diff,
                 summary: reason
             });
 
-            return message.react('✅');
+            await message.react('✅');
         } catch (err) {
-            return message.react('❌');
+            await message.react('❌');
+        } finally {
+            await message.reactions.cache.get('774872461246070795').remove();
         }
     }
 
     async handleBlock(message, reason) {
-        const regex = /User:(.[^)>]+)/;
+        let user;
 
-        const matches = regex.exec(message.content);
-        if (!matches) return;
+        if (message.content
+            && this.config.rcgcdw_extension.mode === 'compact'
+        ) {
+            user = this.parseCompactContent(message.content, 0);
+        }
 
-        const [, user] = matches;
-        if (user === this.config.credentials.username.replace(/@.+/g, '')) return message.react('❌');
+        if (message.embeds.length
+            && message.embeds[0].author.name !== this.config.rcgcdw_extension.wiki_name
+            && this.config.rcgcdw_extension.mode === 'embed'
+        ) {
+            user = message.embeds[0].author.name;
+        }
+
+        // Prevent admins trying to block the bot
+        // idk why they would, but hey, accidents happen
+        if (user === this.config.credentials.username.replace(/@(?:.(?!@))+$/, '')) return message.react('❌');
+
+        await message.react('774872461246070795');
 
         try {
             await this.client.bot.login();
@@ -123,13 +161,27 @@ class MessageReactionAddListener extends Listener {
             await this.client.bot.block({
                 user: user,
                 reason: reason,
-                expiry: 'never'
+                expiry: this.config.rcgcdw_extension.block_duration
             });
 
-            return message.react('✅');
+            await message.react('✅');
         } catch (err) {
-            return message.react('❌');
+            await message.react('❌');
+        } finally {
+            await message.reactions.cache.get('774872461246070795').remove();
         }
+    }
+
+    parseCompactContent(content, positionIndex) {
+        const maskedLinkRegex = /\[(.[^)>]+)]/g;
+
+        const arr = [];
+
+        for (const match of content.matchAll(maskedLinkRegex)) {
+            arr.push(match);
+        }
+
+        return arr[positionIndex][1];
     }
 }
 

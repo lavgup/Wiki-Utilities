@@ -8,7 +8,10 @@
     "blacklisted_users": [],
     "rcgcdw_extension": {
       "enabled": false,
-      "channel_id": "",
+      "channel_ids": [""],
+      "mode": "embed",
+      "wiki_name": "",
+      "block_duration": "2 weeks",
       "emojis": {
         "delete": "\uD83C\uDDE9",
         "revert": "\uD83C\uDDF7",

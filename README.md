@@ -36,7 +36,10 @@ All configuration options are stored in [config.json](config.sample.json).
     * `blacklisted_users`: An array of user IDs, this overrides `allowed_roles`, removing the right from any untrustworthy users.
     * `rcgcdw_extension`
         * `enabled`: Whether the extension is enabled or not.
-        * `channel_id`: The ID of the log channel.
+        * `channel_ids`: An array of all logging channel IDs.
+        * `mode`: `compact` or `embed`. Whether your RcGcDw script is running in compact or embed mode.
+        * `wiki_name`: The name of the wiki that the RC script is running for.
+        * `block_duration`: The block duration applied to the block when using the block reaction. As the system is all reaction-based, this isn't modifiable at the time of block.
         * `emojis`: Any custom emojis to use when reacting, instead of the default regional indicators.
     * `user_map` A map of user IDs to their wiki usernames. Example of this configuration would be `"441164156016787486": "Sidemen19"`. If this option is disabled or missing an ID, it will show the author's Discord tag, instead of their wiki username in edit summaries and reasons.
     * `credentials` (these must be obtained from `Special:BotPasswords`)
@@ -49,7 +52,7 @@ One of Wiki Utilities' main features is its support for [RcGcDw](https://gitlab.
 * `:regional_indicator_d`: Deletes the page edited/created.
 * `:regional_indicator_r`: Reverts the edit.
 
-NOTE: this extension currently only supports a RcGcDw script running in the English locale.
+The extension supports both compact and embed mode.
 
 ### Support
 https://discord.com/invite/2ZjJbBJ

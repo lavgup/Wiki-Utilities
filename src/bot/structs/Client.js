@@ -13,8 +13,9 @@ class Client extends AkairoClient {
                 disableMentions: 'everyone',
                 partials: [
                     'MESSAGE',
+                    'REACTION',
                     'USER',
-                    'REACTION'
+                    'GUILD_MEMBER'
                 ],
                 ws: {
                     intents: [
