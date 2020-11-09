@@ -1,6 +1,9 @@
 const Util = require('./Util');
 const { join } = require('path');
+const i18next = require('i18next');
 const Command = require('./Command');
+const Backend = require('i18next-fs-backend');
+const { readdirSync, lstatSync } = require('fs');
 const { Intents: { FLAGS } } =  require('discord.js');
 const MediaWikiJS = require('@sidemen19/mediawiki.js');
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo');
@@ -126,6 +129,27 @@ class Client extends AkairoClient {
         });
     }
 
+    loadTranslations() {
+        /* eslint-disable no-undef */
+        i18next
+            .use(Backend)
+            .init({
+                initImmediate: true,
+                fallbackLng: 'en',
+                lng: this.config.lang,
+                preload: readdirSync(join(__dirname, '../../locales')).filter(fileName => {
+                    const joinedPath = join(join(__dirname, '../../locales'), fileName);
+                    return lstatSync(joinedPath).isDirectory();
+                }),
+                ns: ['main'],
+                defaultNS: 'main',
+                backend: {
+                    loadPath: join(__dirname, '../../locales/{{lng}}/{{ns}}.json')
+                }
+            }).then(() => console.log('Loaded translations!'));
+        /* eslint-enable no-undef */
+    }
+
     start() {
         this.commandHandler.useListenerHandler(this.listenerHandler);
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
@@ -137,6 +161,8 @@ class Client extends AkairoClient {
         this.commandHandler.loadAll();
         this.listenerHandler.loadAll();
         this.inhibitorHandler.loadAll();
+
+        this.loadTranslations();
 
         return super.login(this.config.token);
     }

@@ -9,6 +9,7 @@ Wiki Utilities is a Discord bot, which allows wiki (think Fandom, Wikipedia) adm
 * Moving (i.e. renaming) pages.
 * Modifying the protection levels of pages.
 * Undeleting (i.e. restoring) pages.
+* Multiple translations, currently supporting English.
 * Integration with [RcGcDw](https://gitlab.com/piotrex43/RcGcDw/) (see [#110](https://gitlab.com/piotrex43/RcGcDw/-/issues/110)), allowing admins to lazily react to log messages with emojis, to either block the user, revert the edit, or delete the page.
 
 ### Installing
@@ -29,6 +30,7 @@ All configuration options are stored in [config.json](config.sample.json).
 
 * `token`: The token of the bot. Get this by following the above instructions.
 * `prefixes`: An array of all the prefixes the bot recognises. Defaults to just `wu!`.
+* `lang`: The language you want the bot to respond with. Currently supports `en`.
 * `owners`: An array of all the owners of the bot. Put your Discord ID here, and any others if you want.
 * `wiki`
     * `url`: The URL to the wiki. Example: `https://community.fandom.com`

@@ -1,0 +1,12 @@
+{
+  "commands": {
+    "help": {
+      "list": "A list of all available commands.",
+      "more_info": "For more information on a specific command, send `{{prefix}}{{alias}} {{command}}`."
+    },
+    "reload": {
+      "success": "Successfully reloaded {{type}} **{{id}}**.",
+      "error": "Something went wrong."
+    }
+  }
+}
