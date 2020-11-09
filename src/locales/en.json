@@ -1,0 +1,5 @@
+{
+  "commands": {
+    "reload": "Successfully reloaded {{type}} **{{id}}**."
+  }
+}
