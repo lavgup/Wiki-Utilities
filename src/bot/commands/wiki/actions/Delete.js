@@ -1,15 +1,15 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 
 class DeleteAction extends Action {
     constructor(data) {
         super(data);
         this.message = data.message;
-
         this.args = data.args;
     }
 
     async exec() {
-        const initMessage = await this.message.util.send('Deleting page...');
+        const initMessage = await this.message.util.send(i18n.t('commands.delete.deleting'));
 
         try {
             await this.bot.login();
@@ -22,7 +22,7 @@ class DeleteAction extends Action {
             return initMessage.edit(err.message);
         }
 
-        return initMessage.edit('Successfully deleted page!');
+        return initMessage.edit(i18n.t('commands.delete.success'));
     }
 }
 

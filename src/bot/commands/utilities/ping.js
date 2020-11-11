@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const Command = require('../../structs/Command');
 
 class PingCommand extends Command {
@@ -5,9 +6,9 @@ class PingCommand extends Command {
         super('ping', {
             aliases: ['ping'],
             description: {
-                content: 'Gets the ping of the bot.'
+                content: i18n.t('commands.ping.description')
             },
-            category: 'Utilities'
+            category: 'utilities'
         });
     }
 

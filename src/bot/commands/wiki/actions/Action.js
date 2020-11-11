@@ -16,7 +16,7 @@ class Action {
     }
 
     exec() {
-        console.error('exec() not implemented');
+        this.client.logger.error('exec() not implemented');
     }
 }
 

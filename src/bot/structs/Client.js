@@ -1,5 +1,6 @@
 const Util = require('./Util');
 const { join } = require('path');
+const logger = require('./Logger');
 const i18next = require('i18next');
 const Command = require('./Command');
 const Backend = require('i18next-fs-backend');
@@ -24,18 +25,52 @@ class Client extends AkairoClient {
                     intents: [
                         FLAGS.GUILDS,
                         FLAGS.GUILD_MESSAGES,
-                        FLAGS.GUILD_MESSAGE_REACTIONS
+                        FLAGS.GUILD_MESSAGE_REACTIONS,
+                        FLAGS.DIRECT_MESSAGES
                     ]
                 }
             }
         );
         this.config = config;
 
+        this.logger = logger;
+        this.util = new Util(this);
+
+        this.bot = new MediaWikiJS({
+            server: config.wiki.url,
+            path: '',
+            botUsername: config.wiki.credentials.username,
+            botPassword: config.wiki.credentials.password
+        });
+    }
+
+    async loadTranslations() {
+        /* eslint-disable no-undef */
+        await i18next
+            .use(Backend)
+            .init({
+                initImmediate: false,
+                fallbackLng: 'en',
+                lng: this.config.lang,
+                preload: readdirSync(join(__dirname, '../../locales')).filter(fileName => {
+                    const joinedPath = join(join(__dirname, '../../locales'), fileName);
+                    return lstatSync(joinedPath).isDirectory();
+                }),
+                ns: ['main'],
+                defaultNS: 'main',
+                backend: {
+                    loadPath: join(__dirname, '../../locales/{{lng}}/{{ns}}.json')
+                }
+            });
+        /* eslint-enable no-undef */
+    }
+
+    initHandlers() {
         const dir = name => join(this.config.root, name);
 
         this.commandHandler = new CommandHandler(this, {
             directory: dir('commands'),
-            prefix: config.prefixes,
+            prefix: this.config.prefixes,
             classToHandle: Command,
             aliasReplacement: /-/g,
             allowMention: true,
@@ -45,11 +80,11 @@ class Client extends AkairoClient {
             defaultCooldown: 3000,
             argumentDefaults: {
                 prompt: {
-                    modifyStart: (_, str) => `${str}\n\nType \`cancel\` to cancel the command.`,
-                    modifyRetry: (_, str) => `${str}\n\nType \`cancel\` to cancel the command.`,
-                    timeout: `You took too long to respond, command has been cancelled.`,
-                    ended: `More than 3 tries and you still didn't quite get it. The command has been cancelled.`,
-                    cancel: `Alright, the command has been cancelled.`,
+                    modifyStart: (_, str) => `${str}\n\n${i18next.t('handler.prompt.cancel')}`,
+                    modifyRetry: (_, str) => `${str}\n\n${i18next.t('handler.prompt.cancel')}`,
+                    timeout: i18next.t('handler.prompt.timeout'),
+                    ended: i18next.t('handler.prompt.ended'),
+                    cancel: i18next.t('handler.prompt.cancelled'),
                     retries: 3,
                     time: 30000
                 },
@@ -57,18 +92,13 @@ class Client extends AkairoClient {
             }
         });
 
+        this.addArgumentTypes();
+
         this.listenerHandler = new ListenerHandler(this, { directory: dir('listeners') });
         this.inhibitorHandler = new InhibitorHandler(this, { directory: dir('inhibitors') });
+    }
 
-        this.util = new Util(this);
-
-        this.bot = new MediaWikiJS({
-            server: config.wiki.url,
-            path: '',
-            botUsername: config.wiki.credentials.username,
-            botPassword: config.wiki.credentials.password
-        });
-
+    addArgumentTypes() {
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
             if (this.config.wiki.user_map.enabled
                 &&  this.config.wiki.user_map[message.author.id]
@@ -129,28 +159,12 @@ class Client extends AkairoClient {
         });
     }
 
-    loadTranslations() {
-        /* eslint-disable no-undef */
-        i18next
-            .use(Backend)
-            .init({
-                initImmediate: true,
-                fallbackLng: 'en',
-                lng: this.config.lang,
-                preload: readdirSync(join(__dirname, '../../locales')).filter(fileName => {
-                    const joinedPath = join(join(__dirname, '../../locales'), fileName);
-                    return lstatSync(joinedPath).isDirectory();
-                }),
-                ns: ['main'],
-                defaultNS: 'main',
-                backend: {
-                    loadPath: join(__dirname, '../../locales/{{lng}}/{{ns}}.json')
-                }
-            }).then(() => console.log('Loaded translations!'));
-        /* eslint-enable no-undef */
-    }
+    async start() {
+        await this.loadTranslations();
+        this.logger.info('Loaded translations!');
 
-    start() {
+        this.initHandlers();
+
         this.commandHandler.useListenerHandler(this.listenerHandler);
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.listenerHandler.setEmitters({
@@ -158,11 +172,12 @@ class Client extends AkairoClient {
             inhibitorHandler: this.inhibitorHandler,
             listenerHandler: this.listenerHandler
         });
+
         this.commandHandler.loadAll();
         this.listenerHandler.loadAll();
         this.inhibitorHandler.loadAll();
 
-        this.loadTranslations();
+        this.logger.info('Loaded handlers!');
 
         return super.login(this.config.token);
     }

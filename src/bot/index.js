@@ -2,8 +2,6 @@
 const config = require('../../config.json');
 const WUClient = require('./structs/Client');
 
-process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
-
 const __rootdir__ = __dirname || process.cwd();
 
 const client = new WUClient({
@@ -11,4 +9,6 @@ const client = new WUClient({
     ...config
 });
 
-client.start();
+process.on('unhandledRejection', error => client.logger.error('Uncaught Promise Rejection', error));
+
+client.start().then(() => client.logger.info('Started client!'));

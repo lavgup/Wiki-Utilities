@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 
 class MoveAction extends Action {
@@ -8,7 +9,7 @@ class MoveAction extends Action {
     }
 
     async exec() {
-        const initMessage = await this.message.channel.send('Moving page...');
+        const initMessage = await this.message.channel.send(i18n.t('commands.move.moving'));
 
         try {
             await this.bot.move({
@@ -20,7 +21,7 @@ class MoveAction extends Action {
             return initMessage.edit(err.message);
         }
 
-        return initMessage.edit('Successfully moved page!');
+        return initMessage.edit(i18n.t('commands.move.success'));
     }
 }
 

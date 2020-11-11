@@ -11,7 +11,7 @@ class ReadyListener extends Listener {
 
     // noinspection JSCheckFunctionSignatures
     exec() {
-        console.log(`Logged in as ${this.client.user.tag}!`);
+        this.client.logger.info(`Logged in as ${this.client.user.tag}!`);
 
         // noinspection JSUnresolvedVariable
         this.client.user.setPresence({

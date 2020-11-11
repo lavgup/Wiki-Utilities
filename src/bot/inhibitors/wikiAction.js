@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const { Inhibitor } = require('discord-akairo');
 const { stripIndents } = require('common-tags');
 
@@ -20,7 +21,7 @@ class WikiActionInhibitor extends Inhibitor {
 
     async exec(message, command) {
         if (!message.guild) return false;
-        if (message.util.parsed.command.categoryID !== 'Wiki') return false;
+        if (message.util.parsed.command.categoryID !== 'wiki') return false;
 
         const config = this.client.config.wiki;
         if (!config) return false;
@@ -32,12 +33,12 @@ class WikiActionInhibitor extends Inhibitor {
         if (config.blacklisted_users.includes(message.author.id)) return true;
 
         if (!config.url) {
-            await message.util.send(`There isn't a wiki set up for this server, yet!`);
+            await message.util.send(i18n.t('handler.inhibitor.no_wiki'));
             return true;
         }
         if (needsRole) {
             if (!config.allowed_roles.length) {
-                await message.util.send(`This command requires a role to be set and given to users to prevent abuse.`);
+                await message.util.send(i18n.t('handler.inhibitor.no_roles'));
                 return true;
             }
 
@@ -46,7 +47,7 @@ class WikiActionInhibitor extends Inhibitor {
 
             if (!config.allowed_roles.some(role => message.member.roles.cache.has(role))) {
                 await message.util.send(stripIndents`
-        You need one of the following roles to use this command.
+        ${i18n.t('handler.inhibitor.need_roles')}
         ${arr.map(role => `\`${role.name}\``).join('\n')}
         `);
                 return true;
@@ -54,7 +55,7 @@ class WikiActionInhibitor extends Inhibitor {
         }
 
         if (needsCredentials && (!config.credentials || (!config.credentials.username || !config.credentials.password))) {
-            await message.util.send(`I am not logged into a wiki bot!`);
+            await message.util.send(i18n.t('handler.inhibitor.no_credentials'));
             return true;
         }
 

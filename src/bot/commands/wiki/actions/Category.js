@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 const { stripIndents } = require('common-tags');
 
@@ -6,19 +7,18 @@ class CategoryAction extends Action {
         super(data);
         this.message = data.message;
         this.client = this.message.client;
-
         this.args = data.args;
     }
 
     async exec() {
-        const latestMessage = await this.message.channel.send(`Getting pages in category **${this.args.category}**...`);
+        const latestMessage = await this.message.channel.send(i18n.t('commands.category.fetching', { category: this.args.category }));
 
         try {
-            let pages = await this.bot.getPagesInCategory(`Category:${this.args.category}`, true);
+            let pages = await this.bot.getPagesInCategory(`${i18n.t('commands.category.category')}:${this.args.category}`, true);
             if (!pages || !pages.length) {
                 return latestMessage.edit(stripIndents`
-                The **${this.args.category}** category is empty!
-                <${this.bot.server}/wiki/Category:${encodeURIComponent(this.args.category)}
+                ${i18n.t('commands.category.empty', { category: this.args.category })}
+                <${this.bot.server}/wiki/${i18n.t('commands.category.category')}:${encodeURIComponent(this.args.category)}>
                 `);
             }
 

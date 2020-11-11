@@ -1,15 +1,15 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 
 class UndeleteAction extends Action {
     constructor(data) {
         super(data);
         this.message = data.message;
-
         this.args = data.args;
     }
 
     async exec() {
-        const initMessage = await this.message.channel.send('Restoring page...');
+        const initMessage = await this.message.channel.send(i18n.t('commands.undelete.restoring'));
 
         try {
             await this.bot.login();
@@ -22,7 +22,7 @@ class UndeleteAction extends Action {
             return initMessage.edit(err.message);
         }
 
-        return initMessage.edit('Successfully restored page!');
+        return initMessage.edit(i18n.t('commands.undelete.success'));
     }
 }
 

@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const { stripIndents } = require('common-tags');
 const Command = require('../../structs/Command');
 const { Listener, Inhibitor, Argument } = require('discord-akairo');
@@ -6,12 +7,8 @@ class ReloadCommand extends Command {
     constructor() {
         super('reload', {
             aliases: ['reload', 'rl'],
-            description: {
-                content: 'Reloads a module.',
-                usages: ['[command]'],
-                examples: ['blacklist', '']
-            },
-            category: 'Utilities',
+            description: i18n.t('commands.reload.description', { returnObjects: true }),
+            category: 'utilities',
             ownerOnly: true,
             args: [
                 {
@@ -23,8 +20,8 @@ class ReloadCommand extends Command {
                         'inhibitor'
                     ),
                     prompt: {
-                        start: message => `${message.author}, which module do you wish to reload?`,
-                        retry: message => `${message.author}, that doesn't look like a valid module!`
+                        start: message => i18n.t('commands.reload.prompt.start', { author: `<@${message.author.id}>` }),
+                        retry: message => i18n.t('commands.reload.prompt.retry', { author: `<@${message.author.id}>` })
                     }
                 }
             ]
@@ -44,10 +41,10 @@ class ReloadCommand extends Command {
                 type = 'inhibitor';
             }
 
-            return message.util.send(`Successfully reloaded ${type} **${reloaded.id}**.`);
+            return message.util.send(i18n.t('commands.reload.success', { type: type, id: reloaded.id }));
         } catch (err) {
             return message.util.send(stripIndents`
-            Something went wrong.
+            ${i18n.t('commands.reload.error')}
             \`\`\`apache
             ${err.message}
             \`\`\`

@@ -1,15 +1,15 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 
 class EditAction extends Action {
     constructor(data) {
         super(data);
-
         this.message = data.message;
         this.args = data.args;
     }
 
     async exec() {
-        const latestMessage = await this.message.util.send('Editing page...');
+        const latestMessage = await this.message.util.send(i18n.t('commands.edit.editing'));
 
         try {
             await this.bot.login();
@@ -30,7 +30,7 @@ class EditAction extends Action {
                 });
             }
 
-            return latestMessage.edit('Successfully edited contents of page.');
+            return latestMessage.edit(i18n.t('commands.edit.success'));
         } catch (err) {
             return latestMessage.edit(err.message);
         }

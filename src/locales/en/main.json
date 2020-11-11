@@ -1,12 +1,165 @@
 {
   "commands": {
     "help": {
+      "description": {
+        "content": "Sends information on the bot's commands.",
+        "usages": [
+          "", "[command]"
+        ]
+      },
       "list": "A list of all available commands.",
-      "more_info": "For more information on a specific command, send `{{prefix}}{{alias}} {{command}}`."
+      "more_info": "For more information on a specific command, send `{{prefix}}{{alias}} <command>`.",
+      "command_help": "{{command}} Command Help",
+      "no_description": "No description provided.",
+      "aliases": "Aliases",
+      "usages": "Usages",
+      "examples": "Examples"
+    },
+    "ping": {
+      "description": "Gets the ping of the bot."
     },
     "reload": {
+      "description": {
+        "content": "Reloads a module.",
+        "usages": ["[command]"]
+      },
       "success": "Successfully reloaded {{type}} **{{id}}**.",
-      "error": "Something went wrong."
+      "error": "Something went wrong.",
+      "prompt": {
+        "start": "{{- author}}, which module do you wish to reload?",
+        "retry": "{{- author}}, that doesn't look like a valid module!"
+      }
+    },
+    "block": {
+      "description": {
+        "content": "Blocks a given user on the wiki.",
+        "usages": [
+          "<user> <expiry>", "<user> <expiry> <reason>"
+        ]
+      },
+      "blocking": "{{type}} user...",
+      "unblock_success": "Successfully unblocked user.",
+      "already_blocked": "That user is already blocked! To unblock them, you can pass the `--unblock` flag.",
+      "not_blocked": "That user is not blocked!",
+      "error": "Error occurred while {{type}} user.",
+      "block_success": "Successfully blocked user!",
+      "prompt": {
+        "user": "{{- author}}, which user do you wish to block?",
+        "expiry": {
+          "start": "{{- author}}, for how long shall I block this user for?",
+          "retry": "{{- author}}, that doesn't look like a valid time!"
+        }
+      }
+    },
+    "category": {
+      "description": {
+        "content": "Lists all pages in a given category on the set wiki.",
+        "usages": [
+          "<category>", "--cfd", "--stub"
+        ]
+      },
+      "fetching": "Getting pages in category **{{category}}**...",
+      "category": "Category",
+      "empty": "The **{{category}}** category is empty!",
+      "prompt": "{{- author}}, which category shall I list the pages of?"
+    },
+    "delete": {
+      "description": {
+        "content": "Deletes a given page on the set wiki, with an optional reason for deletion.",
+        "usages": [
+          "<page> [reason]"
+        ]
+      },
+      "deleting": "Deleting page...",
+      "success": "Successfully deleted page!",
+      "prompt": "{{- author}}, which page shall I delete?"
+    },
+    "edit": {
+      "description": {
+        "content": "Edits a given page on the set wiki, with the option of either appending or prepending content.",
+        "usages": [
+          "<page> <content> --prepend", "<page> <content> --append"
+        ]
+      },
+      "editing": "Editing page...",
+      "success": "Successfully edited contents of page.",
+      "prompt": {
+        "page": "{{- author}}, which page shall I edit?",
+        "content": "{{- author}}, what do you wish to add to {{page}}?",
+        "position": "{{- author}}, do you wish to `prepend` or `append` this content to {{page}}?"
+      }
+    },
+    "move": {
+      "description": {
+        "content": "Moves (renames) a page on the set wiki.",
+        "usages": [
+          "<old_page> <new_page> [-r=reason]"
+        ]
+      },
+      "moving": "Moving page...",
+      "success": "Successfully moved page!",
+      "prompt": {
+        "old": "{{- author}}, which page shall I move?",
+        "new": "{{- author}}, what shall the page's new name be?"
+      }
+    },
+    "protect": {
+      "description": {
+        "content": "Protects a given page on the wiki with an optional expiry.",
+        "usages": [
+          "<page> <time> [-r=<reason>]"
+        ]
+      },
+      "protecting": "Protecting page...",
+      "success": "Successfully protected page!",
+      "prompt": {
+        "page": "{{- author}}, which page shall I protect?",
+        "expiry": {
+          "start": "{{- author}}, for how long shall this page be protected for?",
+          "retry": "{{- author}}, that doesn't look like a valid time!"
+        },
+        "usergroup": {
+          "start": "{{- author}}, which usergroup shall be allowed to edit this page?",
+          "retry": "{{- author}}, that doesn't look like a valid usergroup!",
+          "sysop": "`sysop` for only admins, or",
+          "autoconfirmed": "`autoconfirmed` for only autoconfirmed users."
+        }
+      }
+    },
+    "undelete": {
+      "description": {
+        "content": "Restores/undeletes a given page on the set wiki.",
+        "usages": [
+          "<page> <reason>"
+        ]
+      },
+      "restoring": "Restoring page...",
+      "success": "Successfully restored page!",
+      "prompt": "{{- author}}, which page shall I unprotect?"
     }
+  },
+  "handler": {
+    "categories": {
+      "client": "Client",
+      "utilities": "Utilities",
+      "wiki": "Wiki"
+    },
+    "prompt": {
+      "cancel": "Type `cancel` to cancel the command.",
+      "cancelled": "Alright, the command has been cancelled.",
+      "ended": "More than 3 tries and you still didn't quite get it. The command has been cancelled.",
+      "timeout": "You took too long to respond, command has been cancelled."
+    },
+    "inhibitor": {
+      "no_wiki": "There isn't a wiki set up for this server, yet!",
+      "no_roles": "This command requires a role to be set and given to users to prevent abuse.",
+      "need_roles": "You need one of the following roles to use this command.",
+      "no_credentials": "I am not logged into a wiki bot!"
+    }
+  },
+  "general": {
+    "no_reason": "No reason provided",
+    "no_summary": "No summary provided",
+    "more": "More"
   }
 }

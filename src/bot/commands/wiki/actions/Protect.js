@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 
 class ProtectAction extends Action {
@@ -8,7 +9,7 @@ class ProtectAction extends Action {
     }
 
     async exec() {
-        const initMessage = await this.message.util.send('Protecting page...');
+        const initMessage = await this.message.util.send(i18n.t('commands.protect.protecting'));
 
         try {
             await this.bot.login();
@@ -25,7 +26,7 @@ class ProtectAction extends Action {
             return initMessage.edit(err.message);
         }
 
-        return initMessage.edit('Successfully protected page!');
+        return initMessage.edit(i18n.t('commands.protect.success'));
     }
 }
 

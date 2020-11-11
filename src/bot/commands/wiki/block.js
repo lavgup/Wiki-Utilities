@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const BlockAction = require('./actions/Block');
 const Command = require('../../structs/Command');
 
@@ -5,12 +6,8 @@ class BlockCommand extends Command {
     constructor() {
         super('block', {
             aliases: ['block', 'ban'],
-            description: {
-                content: 'Blocks a given user on wiki.',
-                usages: ['<user> <expiry>', '<user> <expiry> <reason>'],
-                examples: ['Sidemen19 "1 hour"', 'Sidemen19 never vandalism']
-            },
-            category: 'Wiki',
+            description: i18n.t('commands.block.description', { returnObjects: true }),
+            category: 'wiki',
             channel: 'guild',
             flags: ['--unblock', '-ub', '-u'],
             optionFlags: ['--reason=', '-r=']
@@ -21,7 +18,7 @@ class BlockCommand extends Command {
         const user = yield {
             type: 'string',
             prompt: {
-                start: message => `${message.author}, which user do you wish to block?`
+                start: message => i18n.t('commands.block.prompt.user', { author: `<@${message.author.id}>` })
             }
         };
 
@@ -35,8 +32,8 @@ class BlockCommand extends Command {
             : yield {
                 type: 'duration',
                 prompt: {
-                    start: message => `${message.author}, for how long shall I block this user for?`,
-                    retry: message => `${message.author}, that doesn't look like a valid time!`
+                    start: message => i18n.t('commands.block.prompt.expiry.start', { author: `<@${message.author.id}>` }),
+                    retry: message => i18n.t('commands.block.prompt.expiry.retry', { author: `<@${message.author.id}>` })
                 }
             };
 
@@ -44,7 +41,7 @@ class BlockCommand extends Command {
             type: 'summary',
             match: 'option',
             flag: ['--reason=', '-r='],
-            default: 'No reason provided'
+            default: i18n.t('general.no_reason')
         };
 
         return { user, unblock, expiry, reason };

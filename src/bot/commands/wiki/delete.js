@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const DeleteAction = require('./actions/Delete');
 const Command = require('../../structs/Command');
 
@@ -5,12 +6,8 @@ class DeleteCommand extends Command {
     constructor() {
         super('delete', {
             aliases: ['delete', 'del', 'delet'],
-            description: {
-              content: 'Deletes a given page on the set wiki, with an optional reason for deletion.',
-              usages: ['<page> [reason]'],
-              examples: ['Project:Rules -r=haha', 'User:Spam Account -r="spamming on pages"']
-            },
-            category: 'Wiki',
+            description: i18n.t('commands.delete.description', { returnObjects: true }),
+            category: 'wiki',
             channel: 'guild',
             args: [
                 {
@@ -18,7 +15,7 @@ class DeleteCommand extends Command {
                     type: 'string',
                     match: 'text',
                     prompt: {
-                        start: message => `${message.author}, which page do you wish to delete?`
+                        start: message => i18n.t('commands.delete.prompt', { author: `<@${message.author.id}>` })
                     }
                 },
                 {
@@ -26,7 +23,7 @@ class DeleteCommand extends Command {
                     type: 'summary',
                     match: 'option',
                     flag: ['--reason=', '-r='],
-                    default: 'No reason provided'
+                    default: i18n.t('general.no_reason')
                 }
             ]
         });

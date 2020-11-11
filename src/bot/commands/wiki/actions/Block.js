@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const Action = require('./Action');
 const { stripIndents } = require('common-tags');
 
@@ -10,7 +11,8 @@ class BlockAction extends Action {
 
     async exec() {
         const type = this.args.unblock ? 'Unblocking' : 'Blocking';
-        const initMessage = await this.message.util.send(`${type} user...`);
+        const typeTranslated = i18n.t('commands.block.type', { type: type });
+        const initMessage = await this.message.util.send(typeTranslated);
 
         await this.bot.login();
 
@@ -28,16 +30,16 @@ class BlockAction extends Action {
                         user: this.args.user,
                         reason: this.args.reason
                     });
-                    return initMessage.edit('Successfully unblocked user.');
+                    return initMessage.edit(i18n.t('commands.block.unblock_success'));
                 }
 
-                return initMessage.edit('That user is already blocked! To unblock them, you can pass the `--unblock` flag.');
+                return initMessage.edit(i18n.t('commands.block.already_blocked'));
             } else if (this.args.unblock) {
-                return initMessage.edit('That user is not blocked!');
+                return initMessage.edit(i18n.t('commands.block.not_blocked'));
             }
 
             return initMessage.edit(stripIndents`
-            Error occurred while ${type} user.
+            ${i18n.t('commands.block.error', { type: type })}
             \`\`\`apache
             ${body.error.code}
             
@@ -45,7 +47,7 @@ class BlockAction extends Action {
             \`\`\``);
         }
 
-        return this.message.util.send('Successfully blocked user!');
+        return this.message.util.send(i18n.t('commands.block.block_success'));
     }
  }
 
