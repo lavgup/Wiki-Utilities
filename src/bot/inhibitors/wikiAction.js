@@ -33,12 +33,12 @@ class WikiActionInhibitor extends Inhibitor {
         if (config.blacklisted_users.includes(message.author.id)) return true;
 
         if (!config.url) {
-            await message.util.send(i18n.t('handler.inhibitor.no_wiki'));
+            await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_wiki'));
             return true;
         }
         if (needsRole) {
             if (!config.allowed_roles.length) {
-                await message.util.send(i18n.t('handler.inhibitor.no_roles'));
+                await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_wiki'));
                 return true;
             }
 
@@ -47,7 +47,7 @@ class WikiActionInhibitor extends Inhibitor {
 
             if (!config.allowed_roles.some(role => message.member.roles.cache.has(role))) {
                 await message.util.send(stripIndents`
-        ${i18n.t('handler.inhibitor.need_roles')}
+        ${i18n.t('handler.inhibitors.wiki_action.no_wiki')}
         ${arr.map(role => `\`${role.name}\``).join('\n')}
         `);
                 return true;
@@ -55,7 +55,7 @@ class WikiActionInhibitor extends Inhibitor {
         }
 
         if (needsCredentials && (!config.credentials || (!config.credentials.username || !config.credentials.password))) {
-            await message.util.send(i18n.t('handler.inhibitor.no_credentials'));
+            await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_wiki'));
             return true;
         }
 

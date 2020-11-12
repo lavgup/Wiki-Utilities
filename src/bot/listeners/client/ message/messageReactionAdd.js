@@ -1,3 +1,4 @@
+const i18n = require('i18next');
 const { Listener } = require('discord-akairo');
 
 class MessageReactionAddListener extends Listener {
@@ -7,6 +8,10 @@ class MessageReactionAddListener extends Listener {
             event: 'messageReactionAdd',
             category: 'client'
         });
+
+        this.check = '✅';
+        this.cross = '❌';
+        this.loading = '774872461246070795';
     }
 
     async exec(reaction, user) {
@@ -32,28 +37,39 @@ class MessageReactionAddListener extends Listener {
             || config.blacklisted_users.includes(user.id)
         ) return;
 
-        const emojis = Object.values(config.rcgcdw_extension.emojis);
-        if (!emojis.includes(emoji.name)) return;
+        let type;
+        for (const [key, value] of Object.entries(this.config.rcgcdw_extension.emojis)) {
+            if (!Array.isArray(value)) continue;
+
+            if (value.some(t => t.includes(emoji.name))) {
+                type = key;
+            }
+        }
+        if (!type) return;
 
         const reason = config.user_map.enabled
             && config.user_map[user.id]
-        ? `Action taken through Discord - [[User:${config.user_map[user.id]}|${config.user_map[user.id]}]]`
-        : `Action taken through Discord - ${user.tag}`;
+        ? i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
+            user: `[[User:${config.user_map[user.id]}|${config.user_map[user.id]}]]`
+        })
+        : i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
+            user: user.tag
+        });
 
-        switch (emoji.name) {
-            case '\uD83C\uDDE9':
-                await this.handleDelete(message, reason);
+        switch (type) {
+            case 'delete':
+                await this.handleDelete(message, user, reason);
                 break;
-            case '\uD83C\uDDF7':
-                await this.handleRevert(message, reason);
+            case 'revert':
+                await this.handleRevert(message, user, reason);
                 break;
-            case '\uD83C\uDDE7':
-                await this.handleBlock(message, reason);
+            case 'block':
+                await this.handleBlock(message, user, reason);
                 break;
         }
     }
 
-    async handleDelete(message, reason) {
+    async handleDelete(message, user, reason) {
         let page;
 
         if (message.content
@@ -70,9 +86,9 @@ class MessageReactionAddListener extends Listener {
             page = message.embeds[0].title.replace(/\((?:(?:m|\(N!\)) )?[+-]?\d*\)/, '').trim();
         }
 
-        if (!page) return message.react('❌');
+        if (!page) return message.react(this.cross);
 
-        await message.react('774872461246070795');
+        await message.react(this.loading);
 
         try {
             await this.client.bot.login();
@@ -82,15 +98,18 @@ class MessageReactionAddListener extends Listener {
                 reason: reason
             });
 
-            await message.react('✅');
+            await message.react(this.check);
         } catch (err) {
-            await message.react('❌');
+            await message.react(this.cross);
+            user.send(
+                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+            ).catch(() => {});
         } finally {
-            await message.reactions.cache.get('774872461246070795').remove();
+            await message.reactions.cache.get(this.loading).remove();
         }
     }
 
-    async handleRevert(message, reason) {
+    async handleRevert(message, user, reason) {
         let page;
 
         if (message.content
@@ -111,10 +130,10 @@ class MessageReactionAddListener extends Listener {
         const diffRegex = /diff=(\d*)/;
         const diffMatches = diffRegex.exec(message.content);
 
-        if (!diffMatches) return message.react('❌');
+        if (!diffMatches) return message.react(this.cross);
         const [, diff] = diffMatches;
 
-        await message.react('774872461246070795');
+        await message.react(this.loading);
 
         try {
             await this.client.bot.login();
@@ -125,50 +144,56 @@ class MessageReactionAddListener extends Listener {
                 summary: reason
             });
 
-            await message.react('✅');
+            await message.react(this.check);
         } catch (err) {
-            await message.react('❌');
+            await message.react(this.cross);
+            user.send(
+                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+            ).catch(() => {});
         } finally {
-            await message.reactions.cache.get('774872461246070795').remove();
+            await message.reactions.cache.get(this.loading).remove();
         }
     }
 
-    async handleBlock(message, reason) {
-        let user;
+    async handleBlock(message, user, reason) {
+        let username;
 
         if (message.content
             && this.config.rcgcdw_extension.mode === 'compact'
         ) {
-            user = this.parseCompactContent(message.content, 0);
+            username = this.parseCompactContent(message.content, 0);
         }
 
         if (message.embeds.length
             && message.embeds[0].author.name !== this.config.rcgcdw_extension.wiki_name
             && this.config.rcgcdw_extension.mode === 'embed'
         ) {
-            user = message.embeds[0].author.name;
+            username = message.embeds[0].author.name;
         }
 
         // Prevent admins trying to block the bot
         // idk why they would, but hey, accidents happen
-        if (user === this.config.credentials.username.replace(/@(?:.(?!@))+$/, '')) return message.react('❌');
+        if (username === this.config.credentials.username.replace(/@(?:.(?!@))+$/, '')) return message.react('❌');
 
-        await message.react('774872461246070795');
+        await message.react(this.loading);
 
         try {
             await this.client.bot.login();
 
             await this.client.bot.block({
-                user: user,
+                user: username,
                 reason: reason,
                 expiry: this.config.rcgcdw_extension.block_duration
             });
 
-            await message.react('✅');
+            await message.react(this.check);
         } catch (err) {
-            await message.react('❌');
+            await message.react(this.cross);
+            user.send(
+                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+            ).catch(() => {});
         } finally {
-            await message.reactions.cache.get('774872461246070795').remove();
+            await message.reactions.cache.get(this.loading).remove();
         }
     }
 

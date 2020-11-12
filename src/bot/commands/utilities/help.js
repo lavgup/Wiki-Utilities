@@ -5,12 +5,9 @@ class HelpCommand extends Command {
     constructor() {
         super('help', {
             aliases: ['help', 'halp', 'h'],
-            description: {
-                content: i18n.t('commands.help.description', { returnObjects: true }),
-                usages: ['', '[command]']
-            },
+            description: i18n.t('commands.help.description', { returnObjects: true }),
             category: 'utilities',
-            clientPermissions: ['EMBED_LINKS'],
+            clientPermissions: ['EMBED_LINKS', 'ADD_REACTIONS'],
             args: [
                 {
                     id: 'command',

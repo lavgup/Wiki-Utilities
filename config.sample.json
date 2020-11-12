@@ -14,9 +14,9 @@
       "wiki_name": "",
       "block_duration": "2 weeks",
       "emojis": {
-        "delete": "\uD83C\uDDE9",
-        "revert": "\uD83C\uDDF7",
-        "block": "\uD83C\uDDE7"
+        "delete": ["\uD83C\uDDE9"],
+        "revert": ["\uD83C\uDDF7"],
+        "block": ["\uD83C\uDDE7"]
       }
     },
     "user_map": {

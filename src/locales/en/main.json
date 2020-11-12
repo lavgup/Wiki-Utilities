@@ -4,7 +4,7 @@
       "description": {
         "content": "Sends information on the bot's commands.",
         "usages": [
-          "", "[command]"
+          " ", "[command]"
         ]
       },
       "list": "A list of all available commands.",
@@ -150,11 +150,25 @@
       "ended": "More than 3 tries and you still didn't quite get it. The command has been cancelled.",
       "timeout": "You took too long to respond, command has been cancelled."
     },
-    "inhibitor": {
-      "no_wiki": "There isn't a wiki set up for this server, yet!",
-      "no_roles": "This command requires a role to be set and given to users to prevent abuse.",
-      "need_roles": "You need one of the following roles to use this command.",
-      "no_credentials": "I am not logged into a wiki bot!"
+    "inhibitors": {
+      "wiki_action": {
+        "no_wiki": "There isn't a wiki set up for this server, yet!",
+        "no_roles": "This command requires a role to be set and given to users to prevent abuse.",
+        "need_roles": "You need one of the following roles to use this command.",
+        "no_credentials": "I am not logged into a wiki bot!"
+      }
+    },
+    "listeners": {
+      "message_reaction_add": {
+        "rcgcdw_summary": "Action taken through Discord - {{user}}",
+        "error_occurred": "Error occurred: {{error}}"
+      },
+      "missing_permissions": {
+        "user_missing": "you am missing the following permission to run this command:",
+        "user_missing_plural": "you am missing the following permissions to run this command:",
+        "client_missing": "I am missing the following permission to run this command:",
+        "client_missing_plural": "I am missing the following permissions to run this command:"
+      }
     }
   },
   "general": {

@@ -42,7 +42,7 @@ All configuration options are stored in [config.json](config.sample.json).
         * `mode`: `compact` or `embed`. Whether your RcGcDw script is running in compact or embed mode.
         * `wiki_name`: The name of the wiki that the RC script is running for.
         * `block_duration`: The block duration applied to the block when using the block reaction. As the system is all reaction-based, this isn't modifiable at the time of block.
-        * `emojis`: Any custom emojis to use when reacting, instead of the default regional indicators.
+        * `emojis`: Any unicode emojis to use when reacting, instead of the default regional indicators.
     * `user_map` A map of user IDs to their wiki usernames. Example of this configuration would be `"441164156016787486": "Sidemen19"`. If this option is disabled or missing an ID, it will show the author's Discord tag, instead of their wiki username in edit summaries and reasons.
     * `credentials` (these must be obtained from `Special:BotPasswords`)
         * `username`: The username. (it is recommended to use a separate bot account, and give that admin rights, instead of your main account).
