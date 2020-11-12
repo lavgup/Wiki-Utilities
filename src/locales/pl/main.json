@@ -2,9 +2,9 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "Wysyła informacje na temat komend bota.",
                 "usages": [
-                    "",
+                    " ",
                     ""
                 ]
             },
