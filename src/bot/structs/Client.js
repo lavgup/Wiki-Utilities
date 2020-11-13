@@ -51,6 +51,7 @@ class Client extends AkairoClient {
             .init({
                 initImmediate: false,
                 fallbackLng: 'en',
+                returnEmptyString: false,
                 lng: this.config.lang,
                 preload: readdirSync(join(__dirname, '../../locales')).filter(fileName => {
                     const joinedPath = join(join(__dirname, '../../locales'), fileName);
