@@ -1,4 +1,4 @@
-# Wiki Utilities
+# Wiki Utilities[<img src="https://weblate.frisk.space/widgets/wiki-utilities/-/svg-badge.svg" alt="Translations" align="right" />](#translations)
 Wiki Utilities is a Discord bot, which allows wiki (think Fandom, Wikipedia) admins to take administrative actions, such as deleting, moving, protecting pages and more, through Discord. As Wiki Utilities requires credentials, it is a self-hosted bot, meaning you need to host it yourself to use it.
 
 ### Features
@@ -9,7 +9,7 @@ Wiki Utilities is a Discord bot, which allows wiki (think Fandom, Wikipedia) adm
 * Moving (i.e. renaming) pages.
 * Modifying the protection levels of pages.
 * Undeleting (i.e. restoring) pages.
-* Multiple translations, currently supporting English ([add more!](https://weblate.frisk.space/projects/wiki-utilities/bot/)).
+* Multiple translations, currently supporting English and Polish ([add more!](https://weblate.frisk.space/projects/wiki-utilities/bot/)).
 * Integration with [RcGcDw](https://gitlab.com/piotrex43/RcGcDw/) (see [#110](https://gitlab.com/piotrex43/RcGcDw/-/issues/110)), allowing admins to lazily react to log messages with emojis, to either block the user, revert the edit, or delete the page.
 
 ### Installing
@@ -30,7 +30,7 @@ All configuration options are stored in [config.json](config.sample.json).
 
 * `token`: The token of the bot. Get this by following the above instructions.
 * `prefixes`: An array of all the prefixes the bot recognises. Defaults to just `wu!`.
-* `lang`: The language you want the bot to respond with. Currently supports `en`.
+* `lang`: The language you want the bot to respond with. Currently supports `en` and `pl`.
 * `owners`: An array of all the owners of the bot. Put your Discord ID here, and any others if you want.
 * `wiki`
     * `url`: The URL to the wiki. Example: `https://community.fandom.com`
@@ -55,6 +55,9 @@ One of Wiki Utilities' main features is its support for [RcGcDw](https://gitlab.
 * `:regional_indicator_r`: Reverts the edit.
 
 The extension supports both compact and embed mode.
+
+### Translations
+[<img src="https://weblate.frisk.space/widgets/wiki-utilities/-/multi-auto.svg" alt="Translation status" width="80%" />](https://weblate.frisk.space/engage/wiki-utilities/?utm_source=widget)
 
 ### Support
 https://discord.com/invite/2ZjJbBJ
