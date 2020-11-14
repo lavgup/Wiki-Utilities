@@ -40,7 +40,10 @@ class Client extends AkairoClient {
             server: config.wiki.url,
             path: '',
             botUsername: config.wiki.credentials.username,
-            botPassword: config.wiki.credentials.password
+            botPassword: config.wiki.credentials.password,
+            accountUsername: config.wiki.credentials.fandomUsername,
+            accountPassword: config.wiki.credentials.fandomPassword,
+            wikiId: config.wiki.id
         });
     }
 
@@ -49,10 +52,9 @@ class Client extends AkairoClient {
         await i18next
             .use(Backend)
             .init({
-                initImmediate: false,
-                fallbackLng: 'en',
-                returnEmptyString: false,
                 lng: this.config.lang,
+                returnEmptyString: false,
+                fallbackLng: 'en',
                 preload: readdirSync(join(__dirname, '../../locales')).filter(fileName => {
                     const joinedPath = join(join(__dirname, '../../locales'), fileName);
                     return lstatSync(joinedPath).isDirectory();

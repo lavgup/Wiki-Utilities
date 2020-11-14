@@ -9,7 +9,7 @@ class EditCommand extends Command {
             description: i18n.t('commands.edit.description', { returnObjects: true }),
             category: 'wiki',
             channel: 'guild',
-            optionFlags: ['--summary=', '-s=', '--pos=', '-pos=', '-p=']
+            optionFlags: ['--summary=', '-s=', '--reason=', '-r=', '--pos=', '-pos=', '-p=']
         });
     }
 
@@ -29,9 +29,9 @@ class EditCommand extends Command {
         };
 
         const summary = yield {
-            match: 'option',
             type: 'summary',
-            flag: ['--summary=', '-s='],
+            match: 'option',
+            flag: ['--summary=', '-s=', '--reason=', '-s='],
             default: i18n.t('general.no_summary')
         };
 

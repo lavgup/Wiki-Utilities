@@ -110,6 +110,18 @@
                 "new": "{{- author}}, what shall the page's new name be?"
             }
         },
+        "post": {
+            "description": "Posts with a title and content to Fandom discussions.",
+            "usages": [
+                "<title> <content>"
+            ],
+            "prompt": {
+                "title": "{{- author}}, what shall the title of the post be?",
+                "content": "{{- author}}, what shall the content of the post be?"
+            },
+            "posting": "Posting...",
+            "success": "Successfully posted to Discussions!"
+        },
         "protect": {
             "description": {
                 "content": "Protects a given page on the wiki with an optional expiry.",
@@ -163,6 +175,9 @@
                 "no_roles": "This command requires a role to be set and given to users to prevent abuse.",
                 "need_roles": "You need one of the following roles to use this command.",
                 "no_credentials": "I am not logged into a wiki bot!"
+            },
+            "post_command": {
+                "not_fandom": "The configured wiki is not a fandom.com or wikia.org wiki!"
             }
         },
         "listeners": {
