@@ -19,20 +19,6 @@
         "ping": {
             "description": ""
         },
-        "reload": {
-            "description": {
-                "content": "",
-                "usages": [
-                    ""
-                ]
-            },
-            "success": "",
-            "error": "",
-            "prompt": {
-                "start": "",
-                "retry": ""
-            }
-        },
         "block": {
             "description": {
                 "content": "",
@@ -109,6 +95,18 @@
                 "old": "",
                 "new": ""
             }
+        },
+        "post": {
+            "description": "",
+            "usages": [
+                ""
+            ],
+            "prompt": {
+                "title": "",
+                "content": ""
+            },
+            "posting": "",
+            "success": ""
         },
         "protect": {
             "description": {

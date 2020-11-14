@@ -19,20 +19,6 @@
         "ping": {
             "description": "Gets the ping of the bot."
         },
-        "reload": {
-            "description": {
-                "content": "Reloads a module.",
-                "usages": [
-                    "[command]"
-                ]
-            },
-            "success": "Successfully reloaded {{type}} **{{id}}**.",
-            "error": "Something went wrong.",
-            "prompt": {
-                "start": "{{- author}}, which module do you wish to reload?",
-                "retry": "{{- author}}, that doesn't look like a valid module!"
-            }
-        },
         "block": {
             "description": {
                 "content": "Blocks a given user on the wiki.",
