@@ -54,6 +54,8 @@ One of Wiki Utilities' main features is its support for [RcGcDw](https://gitlab.
 * `:regional_indicator_d`: Deletes the page edited/created.
 * `:regional_indicator_r`: Reverts the edit.
 
+Example usage: ![example](https://i.imgur.com/jPA80tk.gif)
+
 The extension supports both compact and embed mode.
 
 ### Translations
