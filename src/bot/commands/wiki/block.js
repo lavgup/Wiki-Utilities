@@ -18,7 +18,7 @@ class BlockCommand extends Command {
         const user = yield {
             type: 'string',
             prompt: {
-                start: message => i18n.t('commands.block.prompt.user', { author: `<@${message.author.id}>` })
+                start: message => i18n.t('commands.block.prompt.user', { author: message.author.toString() })
             }
         };
 
@@ -32,8 +32,8 @@ class BlockCommand extends Command {
             : yield {
                 type: 'duration',
                 prompt: {
-                    start: message => i18n.t('commands.block.prompt.expiry.start', { author: `<@${message.author.id}>` }),
-                    retry: message => i18n.t('commands.block.prompt.expiry.retry', { author: `<@${message.author.id}>` })
+                    start: message => i18n.t('commands.block.prompt.expiry.start', { author: message.author.toString() }),
+                    retry: message => i18n.t('commands.block.prompt.expiry.retry', { author: message.author.toString() })
                 }
             };
 

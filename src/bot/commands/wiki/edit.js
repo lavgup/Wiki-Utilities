@@ -17,14 +17,14 @@ class EditCommand extends Command {
         const page = yield {
             type: 'string',
             prompt: {
-                start: message => i18n.t('commands.edit.prompt.page', { author: `<@${message.author.id}>` })
+                start: message => i18n.t('commands.edit.prompt.page', { author: message.author.toString() })
             }
         };
 
         const content = yield {
             type: 'string',
             prompt: {
-                start: message => i18n.t('commands.edit.prompt.content', { author: `<@${message.author.id}>` })
+                start: message => i18n.t('commands.edit.prompt.content', { author: message.author.toString() })
             }
         };
 
@@ -43,8 +43,8 @@ class EditCommand extends Command {
             match: 'option',
             flag: ['--pos=', '-pos=', '-p='],
             prompt: {
-                start: message => i18n.t('commands.edit.prompt.position', { author: `<@${message.author.id}>` }),
-                retry: message => i18n.t('commands.edit.prompt.position', { author: `<@${message.author.id}>` })
+                start: message => i18n.t('commands.edit.prompt.position', { author: message.author.toString() }),
+                retry: message => i18n.t('commands.edit.prompt.position', { author: message.author.toString() })
             }
         };
 

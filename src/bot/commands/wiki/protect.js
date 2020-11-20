@@ -15,15 +15,15 @@ class ProtectCommand extends Command {
                     id: 'page',
                     type: 'string',
                     prompt: {
-                        start: message => i18n.t('commands.protect.prompt.page', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.protect.prompt.page', { author: message.author.toString() })
                     }
                 },
                 {
                     id: 'expiry',
                     type: 'duration',
                     prompt: {
-                        start: message => i18n.t('commands.protect.prompt.expiry.start', { author: `<@${message.author.id}>` }),
-                        retry: message => i18n.t('commands.protect.prompt.expiry.retry', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.protect.prompt.expiry.start', { author: message.author.toString() }),
+                        retry: message => i18n.t('commands.protect.prompt.expiry.retry', { author: message.author.toString() })
                     }
                 },
                 {

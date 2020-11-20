@@ -15,7 +15,7 @@ class UndeleteCommand extends Command {
                     type: 'string',
                     match: 'text',
                     prompt: {
-                        start: message => i18n.t('commands.undelete.prompt', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.undelete.prompt', { author: message.author.toString() })
                     }
                 },
                 {

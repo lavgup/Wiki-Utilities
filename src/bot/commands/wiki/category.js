@@ -33,7 +33,7 @@ class CategoryCommand extends Command {
                 type: 'string',
                 match: 'text',
                 prompt: {
-                    start: message => i18n.t('commands.category.prompt', { author: `<@${message.author.id}>` })
+                    start: message => i18n.t('commands.category.prompt', { author: message.author.toString() })
                 }
             };
         }

@@ -15,7 +15,7 @@ class DeleteCommand extends Command {
                     type: 'string',
                     match: 'text',
                     prompt: {
-                        start: message => i18n.t('commands.delete.prompt', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.delete.prompt', { author: message.author.toString() })
                     }
                 },
                 {

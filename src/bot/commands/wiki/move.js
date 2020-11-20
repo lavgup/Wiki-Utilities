@@ -15,14 +15,14 @@ class MoveCommand extends Command {
                     id: 'old',
                     type: 'string',
                     prompt: {
-                        start: message => i18n.t('commands.move.prompt.old', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.move.prompt.old', { author: message.author.toString() })
                     }
                 },
                 {
                     id: 'new',
                     type: 'string',
                     prompt: {
-                        start: message => i18n.t('commands.move.prompt.new', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.move.prompt.new', { author: message.author.toString() })
                     }
                 },
                 {

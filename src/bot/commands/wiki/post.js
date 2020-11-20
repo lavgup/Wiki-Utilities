@@ -14,14 +14,14 @@ class PostCommand extends Command {
                     id: 'title',
                     type: 'string',
                     prompt: {
-                        start: message => i18n.t('commands.post.prompt.title', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.post.prompt.title', { author: message.author.toString() })
                     }
                 },
                 {
                     id: 'content',
                     type: 'string',
                     prompt: {
-                        start: message => i18n.t('commands.post.prompt.content', { author: `<@${message.author.id}>` })
+                        start: message => i18n.t('commands.post.prompt.content', { author: message.author.toString() })
                     }
                 }
             ]
