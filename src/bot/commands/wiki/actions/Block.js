@@ -9,9 +9,8 @@ class BlockAction extends Action {
     }
 
     async exec() {
-        const type = this.args.unblock ? 'Unblocking' : 'Blocking';
-        const blocking = i18n.t('commands.block.blocking', { type: type });
-        const initMessage = await this.message.util.send(blocking);
+        const type = this.args.unblock ? i18n.t('commands.block.unblocking') : i18n.t('commands.block.blocking');
+        const initMessage = await this.message.util.send(type);
 
         await this.bot.login();
 

@@ -27,11 +27,12 @@
                     "<user> <expiry> <reason>"
                 ]
             },
-            "blocking": "{{type}} user…",
+            "blocking": "Blocking user…",
+            "unblocking": "Unblocking user…",
             "unblock_success": "Successfully unblocked user.",
             "already_blocked": "That user is already blocked! To unblock them, you can pass the `--unblock` flag.",
             "not_blocked": "That user is not blocked!",
-            "error": "Error occurred while {{type}} user.",
+            "error": "Error occurred while {{type}}",
             "block_success": "Successfully blocked user!",
             "prompt": {
                 "user": "{{- author}}, which user do you wish to block?",
