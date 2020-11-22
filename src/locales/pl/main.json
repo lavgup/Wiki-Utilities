@@ -5,7 +5,7 @@
                 "content": "Wysyła informacje na temat komend bota.",
                 "usages": [
                     " ",
-                    ""
+                    "[komenda]"
                 ]
             },
             "list": "Lista wszystkich dostępnych komend.",
@@ -23,7 +23,7 @@
             "description": {
                 "content": "Przeładowuje moduł.",
                 "usages": [
-                    ""
+                    "[komenda]"
                 ]
             },
             "success": "Pomyślnie przeładowano {{type}} **{{id}}**.",
@@ -73,7 +73,7 @@
             "description": {
                 "content": "Usuwa daną stronę na danej wiki, wraz z opcjonalnym powodem usunięcia.",
                 "usages": [
-                    ""
+                    "<strona> [powód]"
                 ]
             },
             "deleting": "Usuwanie strony…",
@@ -84,8 +84,8 @@
             "description": {
                 "content": "Edytuje daną stronę na określonej wiki, wraz z opcją dodania treści na końcu lub na początku.",
                 "usages": [
-                    "",
-                    ""
+                    "<strona> <treść> --prepend",
+                    "<strona> <treść> --append"
                 ]
             },
             "editing": "Edytowanie strony…",
@@ -100,7 +100,7 @@
             "description": {
                 "content": "Przenosi (zmienia nazwę) strony na podanej wiki.",
                 "usages": [
-                    ""
+                    "<stara_strona> <nowa_strona> [-r=powód]"
                 ]
             },
             "moving": "Przenoszenie strony…",
@@ -114,7 +114,7 @@
             "description": {
                 "content": "Zabezpiecza stronę na wiki wraz z opcjonalnym okresem ważności.",
                 "usages": [
-                    ""
+                    "<strona> <czas> [-r=<powód>]"
                 ]
             },
             "protecting": "Zabezpieczanie strony…",
@@ -137,7 +137,7 @@
             "description": {
                 "content": "Przywraca daną stronę na podanej wiki.",
                 "usages": [
-                    ""
+                    "<strona> <powód>"
                 ]
             },
             "restoring": "Przywracanie strony…",
