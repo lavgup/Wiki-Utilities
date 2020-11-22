@@ -2,55 +2,55 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "बॉट के कमांडों के बारे में जावकारी भेजता है।",
                 "usages": [
                     "",
-                    ""
+                    "[कमांड]"
                 ]
             },
-            "list": "",
-            "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "list": "सभी उपलब्ध कमांडों की एक सूची।",
+            "more_info": "एक विशिष्ट कमांड के बारे में और जानकारी के लिए, `{{prefix}}{{alias}} <कमांड>` भेजें।",
+            "command_help": "{{command}} कमांड सहायता",
+            "no_description": "कोई विवरण नहीं मिला।",
+            "aliases": "उपनाम",
+            "usages": "प्रयोग",
+            "examples": "उदाहरण"
         },
         "ping": {
-            "description": ""
+            "description": "बॉट का पिंग दिखाता है।"
         },
         "reload": {
             "description": {
-                "content": "",
+                "content": "एक मोडल को रिलोड करता है।",
                 "usages": [
-                    ""
+                    "[कमांड]"
                 ]
             },
-            "success": "",
-            "error": "",
+            "success": "{{type}} **{{id}}** को सफलतापूर्वक लोड किया गया है।",
+            "error": "कोई मुश्किल आ गई।",
             "prompt": {
-                "start": "",
-                "retry": ""
+                "start": "{{- author}}, आप किस मोडल को रिलोड करना चाहते हैं?",
+                "retry": "{{- author}}, यह तो कोई स्वीकृत मोडल नहीं लगता!"
             }
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "दिए सदस्य को विकी पर ब्लॉक कर देता है।",
                 "usages": [
-                    "",
-                    ""
+                    "<सदस्य> <समय सीमा>",
+                    "<सदस्य> <समय सीमा> <कारण>"
                 ]
             },
-            "blocking": "",
-            "unblock_success": "",
-            "already_blocked": "",
-            "not_blocked": "",
+            "blocking": "सदस्य को {{type}} किया जा रहा है…",
+            "unblock_success": "सदस्य को सफलतापूर्वक अनब्लॉक कर दिया गया है।",
+            "already_blocked": "यह सदस्य पहले से ही ब्लॉक्ड है! उन्हें अनब्लॉक करने के लिए आप `--unblock` फ्लैग तो पास कर सकते हैं।",
+            "not_blocked": "यह सदस्य ब्लॉक्ड नहीं है!",
             "error": "",
-            "block_success": "",
+            "block_success": "सदस्य को सफलतापूर्वक ब्लॉक कर दिया गया है!",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}, आप किस सदस्य को ब्लॉक करना चाहते हैं?",
                 "expiry": {
-                    "start": "",
+                    "start": "{{- author}}, मैं इस सदस्य को कितने समय के लिए ब्लॉक करूँ?",
                     "retry": ""
                 }
             }
