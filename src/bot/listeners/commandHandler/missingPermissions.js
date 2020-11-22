@@ -1,6 +1,5 @@
 const i18n = require('i18next');
 const { Listener } = require('discord-akairo');
-const { stripIndents } = require('common-tags');
 
 class MissingPermissionsListener extends Listener {
     constructor() {
@@ -16,22 +15,22 @@ class MissingPermissionsListener extends Listener {
 
         switch (type) {
             case 'client':
-                result = stripIndents`
+                result = this.client.fmt.stripIndents(`
                 ${i18n.t('handler.listeners.missing_permissions.client_missing', { count: missing.length })}
                 ${missing
                     .map(m => `\`${m}\``)
                     .join('\n')
                 }
-                `;
+                `);
                 break;
             case 'user':
-                result = stripIndents`
+                result = this.client.fmt.stripIndents(`
                 ${i18n.t('handler.listeners.missing_permissions.user_missing', { count: missing.length })}
                 ${missing
                     .map(m => `\`${m}\``)
                     .join('\n')
                 }
-                `;
+                `);
         }
 
         try {

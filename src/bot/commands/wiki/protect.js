@@ -1,5 +1,4 @@
 const i18n = require('i18next');
-const { stripIndents } = require('common-tags');
 const Command = require('../../structs/Command');
 const ProtectAction = require('./actions/Protect');
 
@@ -32,18 +31,18 @@ class ProtectCommand extends Command {
                     match: 'option',
                     flag: ['--group=', '-g='],
                     prompt: {
-                        start: message => stripIndents`
+                        start: message => this.client.fmt.stripIndents(`
                         ${i18n.t('commands.protect.prompt.usergroup.start', { author: `<@${message.author.id}` })}
                         
                         ${i18n.t('commands.protect.prompt.usergroup.sysop')}
                         ${i18n.t('commands.protect.prompt.usergroup.autoconfirmed')}
-                        `,
-                        retry: message => stripIndents`
+                        `),
+                        retry: message => this.client.fmt.stripIndents(`
                         ${i18n.t('commands.protect.prompt.usergroup.retry', { author: `<@${message.author.id}` })}
                         
                         ${i18n.t('commands.protect.prompt.usergroup.sysop')}
                         ${i18n.t('commands.protect.prompt.usergroup.autoconfirmed')}
-                        `
+                        `)
                     }
                 },
                 {

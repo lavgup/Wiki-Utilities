@@ -3,6 +3,7 @@ const { join } = require('path');
 const logger = require('./Logger');
 const i18next = require('i18next');
 const Command = require('./Command');
+const Formatter = require('./Formatter');
 const Backend = require('i18next-fs-backend');
 const { readdirSync, lstatSync } = require('fs');
 const { Intents: { FLAGS } } =  require('discord.js');
@@ -34,7 +35,8 @@ class Client extends AkairoClient {
         this.config = config;
 
         this.logger = logger;
-        this.util = new Util(this);
+        this.fmt = new Formatter();
+        this.util = new Util();
 
         this.bot = new MediaWikiJS({
             server: config.wiki.url,

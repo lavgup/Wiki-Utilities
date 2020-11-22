@@ -1,6 +1,5 @@
 const i18n = require('i18next');
 const { Inhibitor } = require('discord-akairo');
-const { stripIndents } = require('common-tags');
 
 class WikiActionInhibitor extends Inhibitor {
     constructor() {
@@ -47,10 +46,10 @@ class WikiActionInhibitor extends Inhibitor {
             config.allowed_roles.forEach(role => arr.push(message.guild.roles.cache.get(role)));
 
             if (!config.allowed_roles.some(role => message.member.roles.cache.has(role))) {
-                await message.util.send(stripIndents`
+                await message.util.send(this.client.fmt.stripIndents(`
         ${i18n.t('handler.inhibitors.wiki_action.no_wiki')}
         ${arr.map(role => `\`${role.name}\``).join('\n')}
-        `);
+        `));
                 return true;
             }
         }

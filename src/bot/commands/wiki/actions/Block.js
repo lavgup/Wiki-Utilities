@@ -1,6 +1,5 @@
 const i18n = require('i18next');
 const Action = require('./Action');
-const { stripIndents } = require('common-tags');
 
 class BlockAction extends Action {
     constructor(data) {
@@ -11,8 +10,8 @@ class BlockAction extends Action {
 
     async exec() {
         const type = this.args.unblock ? 'Unblocking' : 'Blocking';
-        const typeTranslated = i18n.t('commands.block.type', { type: type });
-        const initMessage = await this.message.util.send(typeTranslated);
+        const blocking = i18n.t('commands.block.blocking', { type: type });
+        const initMessage = await this.message.util.send(blocking);
 
         await this.bot.login();
 
@@ -38,13 +37,14 @@ class BlockAction extends Action {
                 return initMessage.edit(i18n.t('commands.block.not_blocked'));
             }
 
-            return initMessage.edit(stripIndents`
+            return initMessage.edit(this.client.fmt.stripIndents(`
             ${i18n.t('commands.block.error', { type: type })}
             \`\`\`apache
             ${body.error.code}
             
             ${body.error.info}
-            \`\`\``);
+            \`\`\`
+            `));
         }
 
         return this.message.util.send(i18n.t('commands.block.block_success'));

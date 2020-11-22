@@ -1,6 +1,5 @@
 const i18n = require('i18next');
 const Action = require('./Action');
-const { stripIndents } = require('common-tags');
 
 class CategoryAction extends Action {
     constructor(data) {
@@ -16,10 +15,10 @@ class CategoryAction extends Action {
         try {
             let pages = await this.bot.getPagesInCategory(`${i18n.t('commands.category.category')}:${this.args.category}`, true);
             if (!pages || !pages.length) {
-                return latestMessage.edit(stripIndents`
+                return latestMessage.edit(this.client.fmt.stripIndents(`
                 ${i18n.t('commands.category.empty', { category: this.args.category })}
                 <${this.bot.server}/wiki/${i18n.t('commands.category.category')}:${encodeURIComponent(this.args.category)}>
-                `);
+                `));
             }
 
             pages = pages.map(page => {
