@@ -2,7 +2,7 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "봇의 명령어에 대한 정보를 보냅니다.",
                 "usages": [
                     "",
                     ""
