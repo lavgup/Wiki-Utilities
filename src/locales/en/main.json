@@ -106,7 +106,7 @@
                 "title": "{{- author}}, what shall the title of the post be?",
                 "content": "{{- author}}, what shall the content of the post be?"
             },
-            "posting": "Posting...",
+            "posting": "Posting…",
             "success": "Successfully posted to Discussions!"
         },
         "protect": {

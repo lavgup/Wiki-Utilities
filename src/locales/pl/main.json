@@ -41,11 +41,11 @@
                     "<użytkownik> <czas trwania> <powód>"
                 ]
             },
-            "blocking": "{{type}} użytkownika…",
+            "blocking": "Blokowanie użytkownika…",
             "unblock_success": "Pomyślnie odblokowano użytkownika.",
             "already_blocked": "Ten użytkownik jest już zablokowany! Aby go odblokować, użyj opcji `--unblock`.",
             "not_blocked": "Ten użytkownik nie jest zablokowany!",
-            "error": "Wystąpił błąd podczas {{type}} użytkownika.",
+            "error": "Wystąpił błąd podczas {{type}}",
             "block_success": "Pomyślnie zablokowano użytkownika!",
             "prompt": {
                 "user": "{{- author}}, jakiego użytkownika chcesz zablokować?",
@@ -53,7 +53,8 @@
                     "start": "{{- author}}, na jak długo mam zablokować użytkownika?",
                     "retry": "{{- author}}, to nie wygląda na poprawny czas!"
                 }
-            }
+            },
+            "unblocking": "Odblokowywanie użytkownika…"
         },
         "category": {
             "description": {
@@ -143,6 +144,18 @@
             "restoring": "Przywracanie strony…",
             "success": "Pomyślnie przywrócono stronę!",
             "prompt": "{{- author}}, którą stronę mam odbezpieczyć?"
+        },
+        "post": {
+            "description": "Postuje wraz z tytułem oraz treścią na Dyskusjach Fandomu.",
+            "usages": [
+                "<tytuł> <treść>"
+            ],
+            "prompt": {
+                "title": "{{- author}}, jaki ma być tytuł posta?",
+                "content": "{{- author}}, jaka ma być treść posta?"
+            },
+            "posting": "Postowanie…",
+            "success": "Pomyślnie zapostowano do Dyskusji!"
         }
     },
     "handler": {
@@ -163,6 +176,9 @@
                 "no_roles": "Ta komenda wymaga ustawionej roli nadanej użytkownikom aby zapobiec nadużyciom.",
                 "need_roles": "Potrzebujesz jednej z następujących ról aby użyć tej komendy.",
                 "no_credentials": "Nie jestem zalogowany na konto bota!"
+            },
+            "post_command": {
+                "not_fandom": "Skonfigurowana wiki to nie jest wiki na fandom.com lub wikia.org!"
             }
         },
         "listeners": {
