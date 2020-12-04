@@ -13,7 +13,6 @@ class WikiActionInhibitor extends Inhibitor {
             delete: { needsRole: true, needsCredentials: true },
             edit: { needsRole: true, needsCredentials: true },
             move: { needsRole: true, needsCredentials: true },
-            post: { needsRole: true, needsCredentials: true },
             protect: { needsRole: true, needsCredentials: true },
             undelete: { needsRole: true, needsCredentials: true }
         };
