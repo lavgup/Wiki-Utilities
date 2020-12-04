@@ -1,5 +1,6 @@
 const i18n = require('i18next');
 const { Listener } = require('discord-akairo');
+const MediaWikiJS = require('@sidemen19/mediawiki.js');
 
 class MessageReactionAddListener extends Listener {
     constructor() {
@@ -15,25 +16,31 @@ class MessageReactionAddListener extends Listener {
     }
 
     async exec(reaction, user) {
-        const config = this.client.config.wiki;
+        // Fetch reaction if partial
+        if (reaction.partial) await reaction.fetch();
+
+        const { message, emoji } = reaction;
+
+        const config = this.client.config.guilds[message.guild.id];
         this.config = config;
 
         // If server doesn't have RcGcDw extension enabled
         if (!config.rcgcdw_extension.enabled) return;
 
-        // Fetch resources if partial
-        if (reaction.partial) await reaction.fetch();
-        if (user.partial) await user.fetch();
-
-        const { message, emoji } = reaction;
-
         // If reaction wasn't in RcGcDw logging channel
         if (!config.rcgcdw_extension.channel_ids.includes(message.channel.id)) return;
+
+        // Fetch user if partial
+        if (user.partial) await user.fetch();
 
         const member = await message.guild.members.fetch(user);
 
         // If user isn't permitted to take administrative actions
-        if (!config.allowed_roles.some(role => member.roles.cache.has(role))
+        if (
+            (
+                !config.allowed_roles.some(role => member.roles.cache.has(role))
+                && !this.client.config.owners.includes(user.id)
+            )
             || config.blacklisted_users.includes(user.id)
         ) return;
 
@@ -47,13 +54,20 @@ class MessageReactionAddListener extends Listener {
         }
         if (!type) return;
 
-        const reason = config.user_map.enabled
-            && config.user_map[user.id]
+        const reason = this.client.config.user_map.enabled
+            && this.client.config.user_map[user.id]
         ? i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
-            user: `[[User:${config.user_map[user.id]}|${config.user_map[user.id]}]]`
+            user: `[[User:${this.client.config.user_map[user.id]}|${this.client.config.user_map[user.id]}]]`
         })
         : i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
             user: user.tag
+        });
+
+        this.bot = new MediaWikiJS({
+           server: this.config.url,
+           path: this.config.path,
+           botUsername: this.config.credentials.username,
+           botPassword: this.config.credentials.password
         });
 
         switch (type) {
@@ -91,9 +105,9 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.client.bot.login();
+            await this.bot.login();
 
-            await this.client.bot.delete({
+            await this.bot.delete({
                 title: page,
                 reason: reason
             });
@@ -136,9 +150,9 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.client.bot.login();
+            await this.bot.login();
 
-            await this.client.bot.undo({
+            await this.bot.undo({
                 title: page,
                 revision: diff,
                 summary: reason
@@ -178,9 +192,9 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.client.bot.login();
+            await this.bot.login();
 
-            await this.client.bot.block({
+            await this.bot.block({
                 user: username,
                 reason: reason,
                 expiry: this.config.rcgcdw_extension.block_duration

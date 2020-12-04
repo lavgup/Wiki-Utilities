@@ -48,8 +48,7 @@ class ProtectCommand extends Command {
                 {
                     id: 'reason',
                     match: 'option',
-                    flag: ['--reason=', '-r='],
-                    default: i18n.t('general.no_reason')
+                    flag: ['--reason=', '-r=']
                 }
             ]
         });

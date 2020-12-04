@@ -144,18 +144,6 @@
             "restoring": "Przywracanie strony…",
             "success": "Pomyślnie przywrócono stronę!",
             "prompt": "{{- author}}, którą stronę mam odbezpieczyć?"
-        },
-        "post": {
-            "description": "Postuje wraz z tytułem oraz treścią na Dyskusjach Fandomu.",
-            "usages": [
-                "<tytuł> <treść>"
-            ],
-            "prompt": {
-                "title": "{{- author}}, jaki ma być tytuł posta?",
-                "content": "{{- author}}, jaka ma być treść posta?"
-            },
-            "posting": "Postowanie…",
-            "success": "Pomyślnie zapostowano do Dyskusji!"
         }
     },
     "handler": {
@@ -176,9 +164,6 @@
                 "no_roles": "Ta komenda wymaga ustawionej roli nadanej użytkownikom aby zapobiec nadużyciom.",
                 "need_roles": "Potrzebujesz jednej z następujących ról aby użyć tej komendy.",
                 "no_credentials": "Nie jestem zalogowany na konto bota!"
-            },
-            "post_command": {
-                "not_fandom": "Skonfigurowana wiki to nie jest wiki na fandom.com lub wikia.org!"
             }
         },
         "listeners": {

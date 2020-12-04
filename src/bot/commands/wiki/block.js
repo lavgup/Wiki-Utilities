@@ -41,8 +41,7 @@ class BlockCommand extends Command {
         const reason = yield {
             type: 'summary',
             match: 'option',
-            flag: ['--reason=', '-r='],
-            default: i18n.t('general.no_reason')
+            flag: ['--reason=', '-r=']
         };
 
         return { user, unblock, expiry, reason };

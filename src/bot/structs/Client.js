@@ -7,7 +7,6 @@ const Formatter = require('./Formatter');
 const Backend = require('i18next-fs-backend');
 const { readdirSync, lstatSync } = require('fs');
 const { Intents: { FLAGS } } =  require('discord.js');
-const MediaWikiJS = require('@sidemen19/mediawiki.js');
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo');
 
 class Client extends AkairoClient {
@@ -37,16 +36,6 @@ class Client extends AkairoClient {
         this.logger = logger;
         this.fmt = new Formatter();
         this.util = new Util();
-
-        this.bot = new MediaWikiJS({
-            server: config.wiki.url,
-            path: '',
-            botUsername: config.wiki.credentials.username,
-            botPassword: config.wiki.credentials.password,
-            accountUsername: config.wiki.credentials.fandomUsername,
-            accountPassword: config.wiki.credentials.fandomPassword,
-            wikiId: config.wiki.id
-        });
     }
 
     async loadTranslations() {
@@ -105,10 +94,14 @@ class Client extends AkairoClient {
 
     addArgumentTypes() {
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
-            if (this.config.wiki.user_map.enabled
-                &&  this.config.wiki.user_map[message.author.id]
+            phrase = phrase || message.util.parsed.command.id === 'edit'
+                ? i18next.t('general.no_summary')
+                : i18next.t('general.no_reason');
+
+            if (this.config.user_map.enabled
+                &&  this.config.user_map[message.author.id]
             ) {
-                return `${phrase} - [[User:${this.config.wiki.user_map[message.author.id]}|${this.config.wiki.user_map[message.author.id]}]]`;
+                return `${phrase} - [[User:${this.config.user_map[message.author.id]}|${this.config.user_map[message.author.id]}]]`;
             }
 
             return `${phrase} - ${message.author.tag}`;

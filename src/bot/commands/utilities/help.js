@@ -30,14 +30,14 @@ class HelpCommand extends Command {
             embed.author.icon_url = this.client.user.displayAvatarURL();
             embed.description = command.description.content || i18n.t('commands.help.no_description');
 
-            if (command.aliases && command.aliases.length > 1) {
+            if (command.aliases?.length > 1) {
                 embed.fields.push({
                     name: i18n.t('commands.help.aliases'),
                     value: command.aliases.slice(1).join('\n')
                 });
             }
 
-            if (command.description.usages && command.description.usages.length) {
+            if (command.description?.usages?.length) {
                 embed.fields.push({
                     name: i18n.t('commands.help.usages'),
                     value: command.description.usages.map(usage => `${prefix}${command.aliases[0]} ${this.formatUsage(usage)}`).join('\n')

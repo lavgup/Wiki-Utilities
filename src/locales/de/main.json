@@ -96,18 +96,6 @@
                 "new": ""
             }
         },
-        "post": {
-            "description": "",
-            "usages": [
-                ""
-            ],
-            "prompt": {
-                "title": "",
-                "content": ""
-            },
-            "posting": "",
-            "success": ""
-        },
         "protect": {
             "description": {
                 "content": "",

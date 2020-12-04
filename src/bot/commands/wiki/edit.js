@@ -31,8 +31,7 @@ class EditCommand extends Command {
         const summary = yield {
             type: 'summary',
             match: 'option',
-            flag: ['--summary=', '-s=', '--reason=', '-s='],
-            default: i18n.t('general.no_summary')
+            flag: ['--summary=', '-s=', '--reason=', '-s=']
         };
 
         const pos = yield {

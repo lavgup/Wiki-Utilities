@@ -20,9 +20,9 @@ class WikiActionInhibitor extends Inhibitor {
 
     async exec(message, command) {
         if (!message.guild) return false;
-        if (message.util.parsed.command.categoryID !== 'wiki') return false;
+        if (message.util?.parsed?.command?.categoryID !== 'wiki') return false;
 
-        const config = this.client.config.wiki;
+        const config = this.client.config.guilds[message.guild.id];
         if (!config) return false;
 
         const { needsRole, needsCredentials } = this.commandMap[message.util.parsed.command.id];
@@ -35,25 +35,23 @@ class WikiActionInhibitor extends Inhibitor {
             await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_wiki'));
             return true;
         }
-        if (needsRole) {
-            if (!config.allowed_roles.length) {
-                await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_wiki'));
-                return true;
-            }
 
+        if (needsRole) {
             const arr = [];
             config.allowed_roles.forEach(role => arr.push(message.guild.roles.cache.get(role)));
 
-            if (!config.allowed_roles.some(role => message.member.roles.cache.has(role))) {
+            if (
+                !config.allowed_roles.some(role => message.member.roles.cache.has(role))
+            ) {
                 await message.util.send(this.client.fmt.stripIndents(`
-        ${i18n.t('handler.inhibitors.wiki_action.no_wiki')}
-        ${arr.map(role => `\`${role.name}\``).join('\n')}
+        ${i18n.t('handler.inhibitors.wiki_action.need_roles')}
+        ${arr.map(role => role && `\`${role.name}\``).join('\n')}
         `));
                 return true;
             }
         }
 
-        if (needsCredentials && (!config.credentials || (!config.credentials.username || !config.credentials.password))) {
+        if (needsCredentials && (!config.credentials?.username || !config.credentials?.password)) {
             await message.util.send(i18n.t('handler.inhibitors.wiki_action.no_credentials'));
             return true;
         }

@@ -22,8 +22,7 @@ class DeleteCommand extends Command {
                     id: 'reason',
                     type: 'summary',
                     match: 'option',
-                    flag: ['--reason=', '-r='],
-                    default: i18n.t('general.no_reason')
+                    flag: ['--reason=', '-r=']
                 }
             ]
         });

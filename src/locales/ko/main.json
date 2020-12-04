@@ -97,18 +97,6 @@
                 "new": ""
             }
         },
-        "post": {
-            "description": "",
-            "usages": [
-                ""
-            ],
-            "prompt": {
-                "title": "",
-                "content": ""
-            },
-            "posting": "",
-            "success": ""
-        },
         "protect": {
             "description": {
                 "content": "",
@@ -162,9 +150,6 @@
                 "no_roles": "",
                 "need_roles": "",
                 "no_credentials": ""
-            },
-            "post_command": {
-                "not_fandom": ""
             }
         },
         "listeners": {
