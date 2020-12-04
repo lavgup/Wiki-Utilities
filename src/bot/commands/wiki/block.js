@@ -28,13 +28,14 @@ class BlockCommand extends Command {
         };
 
         const expiry = unblock
-            ? false
+            ? undefined
             : yield {
                 type: 'duration',
                 prompt: {
                     start: message => i18n.t('commands.block.prompt.expiry.start', { author: message.author.toString() }),
                     retry: message => i18n.t('commands.block.prompt.expiry.retry', { author: message.author.toString() })
-                }
+                },
+                default: 'infinite'
             };
 
         const reason = yield {
