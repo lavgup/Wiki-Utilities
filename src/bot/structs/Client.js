@@ -94,9 +94,9 @@ class Client extends AkairoClient {
 
     addArgumentTypes() {
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
-            phrase = phrase || message.util.parsed.command.id === 'edit'
+            phrase = phrase || (message.util.parsed.command.id === 'edit'
                 ? i18next.t('general.no_summary')
-                : i18next.t('general.no_reason');
+                : i18next.t('general.no_reason'));
 
             if (this.config.user_map.enabled
                 &&  this.config.user_map[message.author.id]
@@ -110,7 +110,7 @@ class Client extends AkairoClient {
         this.commandHandler.resolver.addType('duration', (message, phrase) => {
             if (!phrase) return null;
 
-            if (!this.config.infinite_lengths.includes(phrase)) {
+            if (!this.config.infinite_lengths.includes(phrase.toLowerCase())) {
                 const timeRegex = /^(-?(?:\d+)?\.?\d+) *(minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mo|years?|yrs?|y)?$/i;
                 if (!timeRegex.test(phrase)) return null;
 
@@ -153,7 +153,7 @@ class Client extends AkairoClient {
                 }
             }
 
-            return null;
+            return 'infinite';
         });
     }
 
