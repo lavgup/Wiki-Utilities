@@ -178,10 +178,10 @@
                 "error_occurred": "Fehler aufgetreten: {{error}}"
             },
             "missing_permissions": {
-                "user_missing": "Dir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
-                "user_missing_plural": "Dir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:",
-                "client_missing": "Mir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
-                "client_missing_plural": "Mir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:"
+                "user_missing": "Dir fehlt die folgende Berechtigung zum Ausführen dieses Befehls:",
+                "user_missing_plural": "Dir fehlen die folgenden Berechtigungen zum Ausführen dieses Befehls:",
+                "client_missing": "Mir fehlt die folgende Berechtigung zum Ausführen dieses Befehls:",
+                "client_missing_plural": "Mir fehlen die folgenden Berechtigungen zum Ausführen dieses Befehls:"
             }
         }
     },
