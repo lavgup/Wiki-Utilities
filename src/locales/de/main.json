@@ -133,7 +133,7 @@
         },
         "ssh": {
             "long": "Ergebnis zu lang zum senden: {{link}}",
-            "prompt": "{{- author}}, gebe einen Befehl zum ausführen ein!",
+            "prompt": "{{- author}}, gebe einen Befehl zum Ausführen ein!",
             "description": {
                 "usages": [
                     "<Befehl>"
