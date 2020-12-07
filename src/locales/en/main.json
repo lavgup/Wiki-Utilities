@@ -148,7 +148,7 @@
                 ]
             },
             "prompt": "{{- author}}, enter a command for me to run!",
-            "long": "Result too long to send: {{link}}"
+            "long": "Result too long to send: {{- link}}"
         }
     },
     "handler": {
