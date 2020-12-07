@@ -12,6 +12,8 @@ class MoveAction extends Action {
         const initMessage = await this.message.channel.send(i18n.t('commands.move.moving'));
 
         try {
+            await this.bot.login(this.creds.username, this.creds.password);
+
             await this.bot.move({
                 from: this.args.old,
                 to: this.args.new,

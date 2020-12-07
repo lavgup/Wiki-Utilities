@@ -13,7 +13,7 @@ class CategoryCommand extends Command {
         });
     }
 
-    *args() {
+    *args(message) {
         const cfd = yield {
             id: 'cfd',
             match: 'flag',
@@ -38,8 +38,8 @@ class CategoryCommand extends Command {
             };
         }
 
-        if (cfd) category = this.client.config.wiki.categories.cfd;
-        if (stub) category = this.client.config.wiki.categories.stub;
+        if (cfd) category = this.client.config.guilds[message.guild.id]?.categories.cfd;
+        if (stub) category = this.client.config.guilds[message.guild.id]?.categories.stub;
 
         return { category };
     }

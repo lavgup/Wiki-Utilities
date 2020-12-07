@@ -12,7 +12,7 @@ class BlockAction extends Action {
         const type = this.args.unblock ? i18n.t('commands.block.unblocking') : i18n.t('commands.block.blocking');
         const initMessage = await this.message.util.send(type);
 
-        await this.bot.login();
+        await this.bot.login(this.creds.username, this.creds.password);
 
         const body = await this.bot.block({
             user: this.args.user,

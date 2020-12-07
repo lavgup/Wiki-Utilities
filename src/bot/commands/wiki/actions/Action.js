@@ -5,6 +5,8 @@ class Action {
         this.message = data.message;
         this.client = this.message.client;
 
+        this.creds = data.message.client.config.guilds[this.message.guild.id].credentials;
+
         this.config = this.client.config.guilds[this.message.guild.id];
         if (!this.config) throw new Error(`Missing config for guild ${this.message.guild.name} (ID: ${this.message.guild.id})`);
 

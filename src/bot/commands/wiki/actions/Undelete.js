@@ -12,7 +12,7 @@ class UndeleteAction extends Action {
         const initMessage = await this.message.channel.send(i18n.t('commands.undelete.restoring'));
 
         try {
-            await this.bot.login();
+            await this.bot.login(this.creds.username, this.creds.password);
 
             await this.bot.restore({
                 title: this.args.page,

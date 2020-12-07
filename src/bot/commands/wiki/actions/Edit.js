@@ -12,7 +12,7 @@ class EditAction extends Action {
         const latestMessage = await this.message.util.send(i18n.t('commands.edit.editing'));
 
         try {
-            await this.bot.login();
+            await this.bot.login(this.creds.username, this.creds.password);
 
             if (this.args.pos === 'prepend') {
                 await this.bot.prepend({
