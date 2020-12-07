@@ -22,6 +22,8 @@ class MissingPermissionsListener extends Listener {
                     .join('\n')
                 }
                 `);
+
+                this.client.logger.warn(`Client missing permission(s) for command ${command.id}}: ${missing.join('  ')}`);
                 break;
             case 'user':
                 result = this.client.fmt.stripIndents(`
@@ -31,6 +33,8 @@ class MissingPermissionsListener extends Listener {
                     .join('\n')
                 }
                 `);
+
+                this.client.logger.warn(`User ${message.author} missing permission(s) for command ${command.id}}: ${missing.join('  ')}`);
         }
 
         try {

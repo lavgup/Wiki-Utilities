@@ -56,6 +56,8 @@ class Client extends AkairoClient {
                     loadPath: join(__dirname, '../../locales/{{lng}}/{{ns}}.json')
                 }
             });
+
+        this.logger.info(`Loaded translations! Using lang ${this.config.lang}`);
         /* eslint-enable no-undef */
     }
 
@@ -159,8 +161,6 @@ class Client extends AkairoClient {
 
     async start() {
         await this.loadTranslations();
-        this.logger.info('Loaded translations!');
-
         this.initHandlers();
 
         this.commandHandler.useListenerHandler(this.listenerHandler);
