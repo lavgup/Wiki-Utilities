@@ -110,7 +110,7 @@ class Client extends AkairoClient {
         this.commandHandler.resolver.addType('duration', (message, phrase) => {
             if (!phrase) return null;
 
-            if (!/^never|in(?:finit[ey]|definite)$/i.test(phrase)) {
+            if (!this.config.infinite_lengths.includes(phrase)) {
                 const timeRegex = /^(-?(?:\d+)?\.?\d+) *(minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mo|years?|yrs?|y)?$/i;
                 if (!timeRegex.test(phrase)) return null;
 

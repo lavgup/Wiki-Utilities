@@ -37,6 +37,7 @@ All configuration options are stored in [config.json](config.sample.json).
 * `owners`: An array of all the owners of the bot. Put your Discord ID here, and any others if you want. **The owners of the bot bypass all restrictions!** Be careful with who you give this to.
   
 * `guilds`: The object which holds configuration data for each guild. Information on what is required here is below.
+* `infinite_lengths`: What the bot will recognise as "infinite" lengths for block and protect commands.  
 * `user_map` A map of user IDs to their wiki usernames. Example of this configuration would be `"441164156016787486": "Sidemen19"`. If this option is disabled or missing an ID, it will display the author's Discord tag, instead of their wiki username in edit summaries and reasons.
 
 #### Wiki Object

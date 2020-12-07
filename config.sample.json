@@ -27,6 +27,13 @@
       }
     }
   },
+  "infinite_lengths": [
+    "infinite",
+    "never",
+    "forever",
+    "infinity",
+    "indefinite"
+  ],
   "user_map": {
     "enabled": true,
     "": ""
