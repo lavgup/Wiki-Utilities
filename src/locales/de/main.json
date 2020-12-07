@@ -5,166 +5,188 @@
                 "content": "",
                 "usages": [
                     " ",
-                    ""
+                    "[Befehl]"
                 ]
             },
-            "list": "",
+            "list": "Liste aller verfügbaren Befehle.",
             "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "command_help": "{{command}} Befehl Hilfe",
+            "no_description": "Keine Beschreibung verfügbar.",
+            "aliases": "Aliase",
+            "usages": "Verwendungen",
+            "examples": "Beispiele"
         },
         "ping": {
-            "description": ""
+            "description": "Bekommt den Ping vom Bot."
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "Blockiert einen bestimmten Nutzer im Wiki.",
                 "usages": [
-                    "",
-                    ""
+                    "<Nutzer> <Ablaufzeit>",
+                    "<Nutzer> <Ablaufzeit> <Begründung>"
                 ]
             },
-            "blocking": "",
-            "unblock_success": "",
-            "already_blocked": "",
-            "not_blocked": "",
-            "error": "",
-            "block_success": "",
+            "blocking": "Sperre Nutzer…",
+            "unblock_success": "Nutzer erfolgreich entsperrt.",
+            "already_blocked": "Dieser Nutzer ist bereits gesperrt! Zum entsperren, kannst du die `--unblock`flag übergeben.",
+            "not_blocked": "Dieser Nutzer ist nicht gesperrt!",
+            "error": "Fehler aufgetreten, während {{type}}",
+            "block_success": "Nutzer erfolgreich gesperrt!",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}, welchen Nutzer möchtest du blockieren?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, für wie lange soll ich den Nutzer blockieren?",
+                    "retry": "{{- author}}, das sieht nach einer nicht gültigen Zeitangabe aus!"
                 }
-            }
+            },
+            "unblocking": "Entsperre Nutzer…"
         },
         "category": {
             "description": {
-                "content": "",
+                "content": "Listet alle Artikel einer Kategorie von der gesetzten Wiki.",
                 "usages": [
-                    "",
-                    "",
+                    "<Kategorie>",
+                    "--cfd",
                     ""
                 ]
             },
-            "fetching": "",
-            "category": "",
-            "empty": "",
+            "fetching": "Erhalte Artikel in Kategorie **{{category}}**…",
+            "category": "Kategorie",
+            "empty": "Die **{{category}}** Kategorie ist leer!",
             "prompt": ""
         },
         "delete": {
             "description": {
-                "content": "",
+                "content": "Entfernt einen bestimmten Artikel beim gesetzten Wiki, mit einer optionalen Begründung der Löschung.",
                 "usages": [
-                    ""
+                    "<Artikel> [Begründung]"
                 ]
             },
-            "deleting": "",
-            "success": "",
-            "prompt": ""
+            "deleting": "Lösche Artikel…",
+            "success": "Artikel erfolgreich entfernt!",
+            "prompt": "{{- author}}, welchen Artikel soll ich löschen?"
         },
         "edit": {
             "description": {
                 "content": "",
                 "usages": [
-                    "",
-                    ""
+                    "<Artikel> <Inhalt> --prepend",
+                    "<Artikel> <Inhalt> --append"
                 ]
             },
-            "editing": "",
-            "success": "",
+            "editing": "Bearbeite Artikel…",
+            "success": "Erfolgereich den Inhalt des Artikels bearbeitet.",
             "prompt": {
-                "page": "",
-                "content": "",
+                "page": "{{- author}}, welchen Artikel soll ich bearbeiten?",
+                "content": "{{- author}}, was soll ich bei {{page}} hinzufügen?",
                 "position": ""
             }
         },
         "move": {
             "description": {
-                "content": "",
+                "content": "Verschiebung (umbenennen) eines Artikels beim gesetzten Wiki.",
                 "usages": [
-                    ""
+                    "<alten_Artikel> <neuen_Artikel> [-r=Begründung]"
                 ]
             },
-            "moving": "",
-            "success": "",
+            "moving": "Verschiebe Artikel…",
+            "success": "Artikel erfolgreich verschoben!",
             "prompt": {
-                "old": "",
-                "new": ""
+                "old": "{{- author}}, welchen Artikel soll ich verschieben?",
+                "new": "{{- author}}, was soll der neue Artikelname sein?"
             }
         },
         "protect": {
             "description": {
-                "content": "",
+                "content": "Schützt einen Artikel in der Wiki mit einer optionalen Ablaufzeit.",
                 "usages": [
-                    ""
+                    "<Artikel> <Zeit> [-r=<Begründung>]"
                 ]
             },
-            "protecting": "",
-            "success": "",
+            "protecting": "Schütze Artikel…",
+            "success": "Artikel erfolgreich geschützt!",
             "prompt": {
-                "page": "",
+                "page": "{{- author}}, welchen Artikel soll ich schützen?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, für wie lange soll ich den Artikel schützen?",
+                    "retry": "{{- author}}, das ist keine gültige Zeitangabe!"
                 },
                 "usergroup": {
-                    "start": "",
-                    "retry": "",
-                    "sysop": "",
-                    "autoconfirmed": ""
+                    "start": "{{- author}}, welcher Nutzergruppe soll das Bearbeiten erlaubt sein?",
+                    "retry": "{{- author}}, das ist keine gültige Nutzergruppe!",
+                    "sysop": "`sysop` für nur Admins, oder",
+                    "autoconfirmed": "`autoconfirmed` für nur automatisch bestätigte Nutzer."
                 }
             }
         },
         "undelete": {
             "description": {
-                "content": "",
+                "content": "Wiederherstellen eines Artikels bei der gesetzten Wiki.",
                 "usages": [
-                    ""
+                    "<Artikel> <Begründung>"
                 ]
             },
-            "restoring": "",
-            "success": "",
-            "prompt": ""
+            "restoring": "Artikel wiederherstellen…",
+            "success": "Artikel erfolgreich wiederhergestellt!",
+            "prompt": "{{- author}}, welchen Artikel soll ich entsperren?"
+        },
+        "ssh": {
+            "long": "Ergebnis zu lang zum senden: {{link}}",
+            "prompt": "{{- author}}, gebe einen Befehl zum ausführen ein!",
+            "description": {
+                "usages": [
+                    "<Befehl>"
+                ],
+                "content": "Führt Terminal Befehle aus Discord aus."
+            }
+        },
+        "eval": {
+            "prompt": "{{- author}}, welchen Code soll ich ausführen?",
+            "description": {
+                "usages": [
+                    "<Code>"
+                ]
+            }
         }
     },
     "handler": {
         "categories": {
             "client": "",
-            "utilities": "",
-            "wiki": ""
+            "utilities": "Werkzeuge",
+            "wiki": "",
+            "owner": "Eigentümer"
         },
         "prompt": {
-            "cancel": "",
+            "cancel": "Gebe `cancel` ein zum abbrechen des Befehls.",
             "cancelled": "",
             "ended": "",
-            "timeout": ""
+            "timeout": "Du brauchst zu lange zum antworten. Der Befehl wurde abgebrochen."
         },
         "inhibitors": {
             "wiki_action": {
-                "no_wiki": "",
+                "no_wiki": "Es wurde noch keine Wiki für diesen Server gesetzt!",
                 "no_roles": "",
-                "need_roles": "",
-                "no_credentials": ""
+                "need_roles": "Du benötigst eines der folgenden Gruppen zum verwenden deises Befehls.",
+                "no_credentials": "Ich bin nicht in einem Wiki Bot angemeldet!"
             }
         },
         "listeners": {
             "message_reaction_add": {
-                "rcgcdw_summary": "",
-                "error_occurred": ""
+                "rcgcdw_summary": "Aktion über Discord ausgeführt - {{user}}",
+                "error_occurred": "Fehler aufgetreten: {{error}}"
             },
             "missing_permissions": {
-                "user_missing": "",
-                "client_missing": ""
+                "user_missing": "Dir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
+                "user_missing_plural": "Dir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:",
+                "client_missing": "Mir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
+                "client_missing_plural": "Mir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:"
             }
         }
     },
     "general": {
-        "no_reason": "",
-        "no_summary": "",
-        "more": ""
+        "no_reason": "Keine Begründung angegeben",
+        "no_summary": "Keine Zusammenfassung angegeben",
+        "more": "Mehr"
     }
 }
