@@ -5,71 +5,71 @@
                 "content": "봇의 명령어에 대한 정보를 보냅니다.",
                 "usages": [
                     "",
-                    ""
+                    "[명령어]"
                 ]
             },
-            "list": "",
-            "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "list": "사용 가능한 모든 명령어의 목록입니다.",
+            "more_info": "특정 명령어에 대한 더 많은 정보는 `{{prefix}}{{alias}} <명령어>` 명령으로 볼 수 있습니다.",
+            "command_help": "{{command}} 명령어 도움말",
+            "no_description": "설명이 준비되어 있지 않습니다.",
+            "aliases": "별명",
+            "usages": "사용법",
+            "examples": "예시"
         },
         "ping": {
-            "description": ""
+            "description": "봇에게 핑을 날립니다."
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "대상 사용자를 위키에서 차단합니다.",
                 "usages": [
-                    "",
-                    ""
+                    "<사용자> <차단 기간>",
+                    "<사용자> <차단 기간> <이유>"
                 ]
             },
-            "blocking": "",
-            "unblocking": "",
-            "unblock_success": "",
-            "already_blocked": "",
-            "not_blocked": "",
-            "error": "",
-            "block_success": "",
+            "blocking": "사용자를 차단하고 있습니다…",
+            "unblocking": "사용자를 차단 해제하고 있습니다…",
+            "unblock_success": "사용자를 차단 해제했습니다.",
+            "already_blocked": "이 사용자는 이미 차단되어 있습니다! 차단을 해제하려면 `--unblock` 플래그를 사용하세요.",
+            "not_blocked": "이 사용자는 차단되지 않았습니다!",
+            "error": "{{type}} 중에 오류 발생",
+            "block_success": "사용자를 차단했습니다!",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}, 누구를 차단할까요?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, 얼마나 오랫동안 이 사용자를 차단할까요?",
+                    "retry": "{{- author}}, 올바른 시간을 지정하지 않은 것 같아요!"
                 }
             }
         },
         "category": {
             "description": {
-                "content": "",
+                "content": "지정한 위키의 제시된 분류 내의 모든 문서를 나열합니다.",
                 "usages": [
-                    "",
+                    "<분류>",
                     "",
                     ""
                 ]
             },
-            "fetching": "",
-            "category": "",
-            "empty": "",
-            "prompt": ""
+            "fetching": "**{{category}}** 분류의 문서를 가져오고 있습니다…",
+            "category": "분류",
+            "empty": "**{{category}}** 분류가 비어 있어요!",
+            "prompt": "{{- author}}, 어떤 분류의 문서 목록을 불러올까요?"
         },
         "delete": {
             "description": {
-                "content": "",
+                "content": "해당 위키의 제시된 문서를 삭제합니다. 이유를 지정할 수 있습니다.",
                 "usages": [
-                    ""
+                    "<문서> [이유]"
                 ]
             },
-            "deleting": "",
-            "success": "",
-            "prompt": ""
+            "deleting": "문서를 삭제하고 있습니다…",
+            "success": "문서를 삭제했어요!",
+            "prompt": "{{- author}}, 어떤 문서를 삭제할까요?"
         },
         "edit": {
             "description": {
-                "content": "",
+                "content": "지정된 위키에서 특정 문서를 수정합니다. 문서의 최상단에 편집을 넣거나 최하단에 넣을 수 있습니다.",
                 "usages": [
                     "",
                     ""
