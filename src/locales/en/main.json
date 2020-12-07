@@ -130,11 +130,31 @@
             "restoring": "Restoring page…",
             "success": "Successfully restored page!",
             "prompt": "{{- author}}, which page shall I unprotect?"
+        },
+        "eval": {
+            "description": {
+                "content": "Evaluates JavaScript code.",
+                "usages": [
+                    "<code>"
+                ]
+            },
+            "prompt": "{{- author}}, what code shall I evaluate?"
+        },
+        "ssh": {
+            "description": {
+                "content": "Executes terminal commands from Discord.",
+                "usages": [
+                    "<command>"
+                ]
+            },
+            "prompt": "{{- author}}, enter a command for me to run!",
+            "long": "Result too long to send: {{link}}"
         }
     },
     "handler": {
         "categories": {
             "client": "Client",
+            "owner": "Owner",
             "utilities": "Utilities",
             "wiki": "Wiki"
         },
