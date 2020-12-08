@@ -1,18 +1,32 @@
 const i18n = require('i18next');
-const { Listener } = require('discord-akairo');
+const Plugin = require('../structs/Plugin');
 const MediaWikiJS = require('@sidemen19/mediawiki.js');
 
-class MessageReactionAddListener extends Listener {
-    constructor() {
-        super('messageReactionAdd', {
-            emitter: 'client',
-            event: 'messageReactionAdd',
-            category: 'client'
+const instances = {};
+
+const getBotInstance = (guild, config) => {
+    if (!instances[guild.id]) {
+        instances[guild.id] = new MediaWikiJS({
+            server: config.url,
+            path: config.path,
+            botUsername: config.credentials.username,
+            botPassword: config.credentials.password
         });
+    }
+
+    return instances[guild.id];
+};
+
+class RCScript extends Plugin {
+    constructor(options) {
+        super('rcscript');
+        this.client = options.client;
 
         this.check = '✅';
         this.cross = '❌';
-        this.loading = '774872461246070795';
+        this.loading = '⏳';
+
+        this.client.on('messageReactionAdd', this.exec.bind(this));
     }
 
     async exec(reaction, user) {
@@ -20,6 +34,9 @@ class MessageReactionAddListener extends Listener {
         if (reaction.partial) await reaction.fetch();
 
         const { message, emoji } = reaction;
+
+        // Message wasn't in a guild
+        if (!message.guild) return;
 
         const config = this.client.config.guilds[message.guild.id];
         this.config = config;
@@ -55,20 +72,16 @@ class MessageReactionAddListener extends Listener {
         if (!type) return;
 
         const reason = this.client.config.user_map.enabled
-            && this.client.config.user_map[user.id]
-        ? i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
-            user: `[[User:${this.client.config.user_map[user.id]}|${this.client.config.user_map[user.id]}]]`
-        })
-        : i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
-            user: user.tag
-        });
+        && this.client.config.user_map[user.id]
+            ? i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
+                user: `[[User:${this.client.config.user_map[user.id]}|${this.client.config.user_map[user.id]}]]`
+            })
+            : i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
+                user: user.tag
+            });
 
-        this.bot = new MediaWikiJS({
-           server: this.config.url,
-           path: this.config.path,
-           botUsername: this.config.credentials.username,
-           botPassword: this.config.credentials.password
-        });
+
+        this.bot = getBotInstance(message.guild, this.config);
 
         switch (type) {
             case 'delete':
@@ -105,7 +118,7 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.bot.login();
+            await this.bot.login(this.config.credentials.username, this.config.credentials.password);
 
             await this.bot.delete({
                 title: page,
@@ -127,7 +140,7 @@ class MessageReactionAddListener extends Listener {
         let page;
 
         if (message.content
-        && this.config.rcgcdw_extension.mode === 'compact'
+            && this.config.rcgcdw_extension.mode === 'compact'
         ) {
             page = this.parseCompactContent(message.content, 1);
         }
@@ -150,7 +163,7 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.bot.login();
+            await this.bot.login(this.config.credentials.username, this.config.credentials.password);
 
             await this.bot.undo({
                 title: page,
@@ -192,7 +205,7 @@ class MessageReactionAddListener extends Listener {
         await message.react(this.loading);
 
         try {
-            await this.bot.login();
+            await this.bot.login(this.config.credentials.username, this.config.credentials.password);
 
             await this.bot.block({
                 user: username,
@@ -224,4 +237,4 @@ class MessageReactionAddListener extends Listener {
     }
 }
 
-module.exports = MessageReactionAddListener;
+module.exports = RCScript;

@@ -39,6 +39,14 @@ All configuration options are stored in [config.json](config.sample.json).
 * `guilds`: The object which holds configuration data for each guild. Information on what is required here is below.
 * `infinite_lengths`: What the bot will recognise as "infinite" lengths for block and protect commands.  
 * `user_map` A map of user IDs to their wiki usernames. Example of this configuration would be `"441164156016787486": "Sidemen19"`. If this option is disabled or missing an ID, it will display the author's Discord tag, instead of their wiki username in edit summaries and reasons.
+* `summaries` The format summaries and reasons will be in.
+    * Supported variables for the formats are:
+        * `$reason`/`$summary`: The reason provided when using the command.
+        * `$tag`: The message author's Discord tag.
+        * `$username`: The message author's wiki username, if existent in the user map.
+    
+    * The string dynamically changes depending on whether the message author's id exists in the user map, so there are two options for each command.
+    * If you are confused, check `config.sample.json` out.
 
 #### Wiki Object
 * `url`: The URL to the wiki. Example: `https://community.fandom.com`

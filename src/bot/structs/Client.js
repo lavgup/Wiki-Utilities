@@ -5,6 +5,7 @@ const i18next = require('i18next');
 const Command = require('./Command');
 const Formatter = require('./Formatter');
 const Backend = require('i18next-fs-backend');
+const PluginHandler = require('./PluginHandler');
 const { readdirSync, lstatSync } = require('fs');
 const { Intents: { FLAGS } } =  require('discord.js');
 const { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord-akairo');
@@ -92,21 +93,30 @@ class Client extends AkairoClient {
 
         this.listenerHandler = new ListenerHandler(this, { directory: dir('listeners') });
         this.inhibitorHandler = new InhibitorHandler(this, { directory: dir('inhibitors') });
+        this.pluginHandler = new PluginHandler(this, {directory: dir('plugins') });
     }
 
     addArgumentTypes() {
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
-            phrase = phrase || (message.util.parsed.command.id === 'edit'
+            const { id } = message.util.parsed.command;
+            
+            const reason = phrase || (id === 'edit'
                 ? i18next.t('general.no_summary')
                 : i18next.t('general.no_reason'));
 
-            if (this.config.user_map.enabled
-                &&  this.config.user_map[message.author.id]
-            ) {
-                return `${phrase} - [[User:${this.config.user_map[message.author.id]}|${this.config.user_map[message.author.id]}]]`;
-            }
+            let username;
 
-            return `${phrase} - ${message.author.tag}`;
+            if (this.config.user_map.enabled
+                && this.config.user_map[message.author.id]
+            ) username = this.config.user_map[message.author.id];
+            
+            const string = this.config.summaries[id][username ? 'is_mapped' : 'not_mapped' ];
+
+            return string
+                .replace('$reason', reason)
+                .replace('$summary', reason)
+                .replace('$tag', message.author.tag)
+                .replace('$username', username);
         });
 
         this.commandHandler.resolver.addType('duration', (message, phrase) => {
@@ -174,6 +184,7 @@ class Client extends AkairoClient {
         this.commandHandler.loadAll();
         this.listenerHandler.loadAll();
         this.inhibitorHandler.loadAll();
+        this.pluginHandler.loadAll();
 
         this.logger.info('Loaded handlers!');
 

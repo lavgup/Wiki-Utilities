@@ -37,5 +37,31 @@
   "user_map": {
     "enabled": true,
     "": ""
+  },
+  "summaries": {
+    "block": {
+      "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$reason - $tag"
+    },
+    "delete": {
+      "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$reason - $tag"
+    },
+    "edit": {
+      "is_mapped": "$summary - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$summary - $tag"
+    },
+    "move": {
+      "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$reason - $tag"
+    },
+    "unprotect": {
+      "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$reason - $tag"
+    },
+    "undelete": {
+      "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
+      "not_mapped": "$reason - $tag"
+    }
   }
 }
