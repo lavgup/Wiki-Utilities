@@ -18,7 +18,9 @@ class BlockAction extends Action {
             user: this.args.user,
             expiry: this.args.expiry,
             reason: this.args.reason,
-            autoblock: true
+            allowUserTalk: this.config.defaults.allow_user_talk,
+            autoblock: this.config.defaults.autoblock,
+            reblock: this.config.defaults.reblock
         });
 
         if (body.error) {

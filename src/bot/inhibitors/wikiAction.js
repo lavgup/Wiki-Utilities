@@ -42,6 +42,7 @@ class WikiActionInhibitor extends Inhibitor {
 
             if (
                 !config.allowed_roles.some(role => message.member.roles.cache.has(role))
+                && !this.client.config.owners.includes(message.author.id)
             ) {
                 await message.util.send(this.client.fmt.stripIndents(`
         ${i18n.t('handler.inhibitors.wiki_action.need_roles')}

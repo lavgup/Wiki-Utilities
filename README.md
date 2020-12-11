@@ -53,6 +53,10 @@ All configuration options are stored in [config.json](config.sample.json).
 * `path`: The path to the wiki's api.php file. For example, all Fandom wikis' path is an empty string as the file's located at `c.fandom.com/api.php`, but wikipedia has `/w` as their path as their api.php file is located at `en.wikipedia.org/w/api.php`  
 * `allowed_roles`: An array of role IDs, the members of it will be able to take administrative wiki actions. (NOTE: give this only to a trusted role, this is basically giving admin rights to whoever is in this role). Owners of the bot bypass this.
 * `blacklisted_users`: An array of user IDs, this overrides `allowed_roles`, removing the right from any untrustworthy users.
+* `defaults`  
+   * `allow_user_talk`: Whether the bot should block the user from editing their talk page.
+   * `autoblock`: Whether to automatically block the last used IP address, and any subsequent IP addresses they try to login from.
+   * `reblock`: Whether to override an existing block. 
 * `rcgcdw_extension`
    * `enabled`: Whether the extension is enabled or not.
    * `channel_ids`: An array of all logging channel IDs.

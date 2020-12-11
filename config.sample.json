@@ -9,6 +9,11 @@
       "path": "",
       "allowed_roles": [""],
       "blacklisted_users": [],
+      "defaults": {
+        "allow_user_talk": false,
+        "autoblock": true,
+        "block_user_talk": true
+      },
       "rcgcdw_extension": {
         "enabled": false,
         "channel_ids": [""],
