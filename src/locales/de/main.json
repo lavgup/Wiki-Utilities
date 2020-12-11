@@ -2,14 +2,14 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "Sendet Informationen zu Bot Befehlen.",
                 "usages": [
                     " ",
                     "[Befehl]"
                 ]
             },
             "list": "Liste aller verfügbaren Befehle.",
-            "more_info": "",
+            "more_info": "Für mehr Informationen zu einem bestimmen Befehl, sende `{{prefix}}{{alias}} <Befehl>`.",
             "command_help": "{{command}} Befehl Hilfe",
             "no_description": "Keine Beschreibung verfügbar.",
             "aliases": "Aliase",
@@ -48,13 +48,13 @@
                 "usages": [
                     "<Kategorie>",
                     "--cfd",
-                    ""
+                    "--stub"
                 ]
             },
             "fetching": "Erhalte Artikel in Kategorie **{{category}}**…",
             "category": "Kategorie",
             "empty": "Die **{{category}}** Kategorie ist leer!",
-            "prompt": ""
+            "prompt": "{{- author}}, von welcher Kategorie soll ich die Artikel auflisten?"
         },
         "delete": {
             "description": {
@@ -69,7 +69,7 @@
         },
         "edit": {
             "description": {
-                "content": "",
+                "content": "Bearbeitet einen Artikel bei der gesetzten Wiki, mit der Option zum Anhängen oder Voranstellen des Inhalts.",
                 "usages": [
                     "<Artikel> <Inhalt> --prepend",
                     "<Artikel> <Inhalt> --append"
@@ -80,7 +80,7 @@
             "prompt": {
                 "page": "{{- author}}, welchen Artikel soll ich bearbeiten?",
                 "content": "{{- author}}, was soll ich bei {{page}} hinzufügen?",
-                "position": ""
+                "position": "{{- author}}, soll ich den Inhalt `voranstellen` oder `anhängen` bei {{page}}?"
             }
         },
         "move": {
@@ -132,7 +132,7 @@
             "prompt": "{{- author}}, welchen Artikel soll ich entsperren?"
         },
         "ssh": {
-            "long": "Ergebnis zu lang zum senden: {{link}}",
+            "long": "Ergebnis zu lang zum senden: {{- link}}",
             "prompt": "{{- author}}, gebe einen Befehl zum Ausführen ein!",
             "description": {
                 "usages": [
@@ -142,31 +142,32 @@
             }
         },
         "eval": {
-            "prompt": "{{- author}}, welchen Code soll ich ausführen?",
+            "prompt": "{{- author}}, welchen Code soll ich auswerten?",
             "description": {
                 "usages": [
                     "<Code>"
-                ]
+                ],
+                "content": "Wertet JavaScript-Code aus."
             }
         }
     },
     "handler": {
         "categories": {
-            "client": "",
+            "client": "Client",
             "utilities": "Werkzeuge",
-            "wiki": "",
+            "wiki": "Wiki",
             "owner": "Eigentümer"
         },
         "prompt": {
             "cancel": "Gebe `cancel` ein zum abbrechen des Befehls.",
-            "cancelled": "",
-            "ended": "",
+            "cancelled": "Alles klar, der Befehl wurde abgebrochen.",
+            "ended": "Mehr als 3 Versuche und du scheinst es nicht zu kapieren. Dieser Befehl wurde abgebrochen.",
             "timeout": "Du brauchst zu lange zum antworten. Der Befehl wurde abgebrochen."
         },
         "inhibitors": {
             "wiki_action": {
                 "no_wiki": "Es wurde noch keine Wiki für diesen Server gesetzt!",
-                "no_roles": "",
+                "no_roles": "Dieser Befehl benötigt eine gesetzte Rolle die Nutzern gegeben wird um Missbrauch vorzubeugen.",
                 "need_roles": "Du benötigst eines der folgenden Gruppen zum verwenden deises Befehls.",
                 "no_credentials": "Ich bin nicht in einem Wiki Bot angemeldet!"
             }
@@ -177,10 +178,10 @@
                 "error_occurred": "Fehler aufgetreten: {{error}}"
             },
             "missing_permissions": {
-                "user_missing": "Dir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
-                "user_missing_plural": "Dir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:",
-                "client_missing": "Mir fehlt die folgende Berechtigung zum ausführen dieses Befehls:",
-                "client_missing_plural": "Mir fehlen die folgenden Berechtigungen zum ausführen dieses Befehls:"
+                "user_missing": "Dir fehlt die folgende Berechtigung zum Ausführen dieses Befehls:",
+                "user_missing_plural": "Dir fehlen die folgenden Berechtigungen zum Ausführen dieses Befehls:",
+                "client_missing": "Mir fehlt die folgende Berechtigung zum Ausführen dieses Befehls:",
+                "client_missing_plural": "Mir fehlen die folgenden Berechtigungen zum Ausführen dieses Befehls:"
             }
         }
     },
