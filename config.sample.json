@@ -46,27 +46,47 @@
   "summaries": {
     "block": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$reason - $tag"
+      "not_mapped": "$reason - $tag",
+      "presets": {
+        "default": "Blocked user",
+        "vandal": "Vandalizing pages",
+        "spam": "Spamming"
+      }
     },
     "delete": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$reason - $tag"
+      "not_mapped": "$reason - $tag",
+      "presets": {
+        "default": "Deleted page"
+      }
     },
     "edit": {
       "is_mapped": "$summary - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$summary - $tag"
+      "not_mapped": "$summary - $tag",
+      "presets": {
+        "default": "Edited page"
+      }
     },
     "move": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$reason - $tag"
+      "not_mapped": "$summary - $tag",
+      "presets": {
+        "default": "Moved page"
+      }
     },
     "unprotect": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$reason - $tag"
+      "not_mapped": "$reason - $tag",
+      "presets": {
+        "default": "Unprotected page"
+      }
     },
     "undelete": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$reason - $tag"
+      "not_mapped": "$reason - $tag",
+      "presets": {
+        "default": "Restored page"
+      }
     }
   }
 }

@@ -99,10 +99,15 @@ class Client extends AkairoClient {
     addArgumentTypes() {
         this.commandHandler.resolver.addType('summary', (message, phrase) => {
             const { id } = message.util.parsed.command;
-            
-            const reason = phrase || (id === 'edit'
-                ? i18next.t('general.no_summary')
-                : i18next.t('general.no_reason'));
+
+            const reason =
+                this.config.summaries[id]?.presets[phrase.toLowerCase()]
+                || phrase
+                || this.config.summaries[id]?.presets?.default
+                || (id === 'edit'
+                    ? i18next.t('general.no_summary')
+                    : i18next.t('general.no_reason')
+                );
 
             let username;
 
@@ -110,13 +115,20 @@ class Client extends AkairoClient {
                 && this.config.user_map[message.author.id]
             ) username = this.config.user_map[message.author.id];
             
-            const string = this.config.summaries[id][username ? 'is_mapped' : 'not_mapped' ];
+            let string = this.config.summaries[id][username ? 'is_mapped' : 'not_mapped' ];
 
-            return string
-                .replace('$reason', reason)
-                .replace('$summary', reason)
-                .replace('$tag', message.author.tag)
-                .replace('$username', username);
+            const replacements = {
+                '$reason': reason,
+                '$summary': reason,
+                '$tag': message.author.tag,
+                '$username': username
+            };
+
+            for (const [key, val] of Object.entries(replacements)) {
+                if (val) string = string.replace(key, val);
+            }
+
+            return string;
         });
 
         this.commandHandler.resolver.addType('duration', (message, phrase) => {
