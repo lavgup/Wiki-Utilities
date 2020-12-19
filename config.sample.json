@@ -4,11 +4,14 @@
   "lang": "en",
   "owners": [""],
   "guilds": {
-    "": {
-      "url": "",
-      "path": "",
+    "390342113042366465": {
+      "url": "https://en.wikipedia.org/w/api.php",
       "allowed_roles": [""],
-      "blacklisted_users": [],
+      "blacklisted_users": [""],
+      "categories": {
+        "cfd": "Candidates for deletion",
+        "stub": "Stubs"
+      },
       "defaults": {
         "allow_user_talk": false,
         "autoblock": true,
@@ -69,7 +72,7 @@
     },
     "move": {
       "is_mapped": "$reason - [[User:$username/discord|via Discord]]",
-      "not_mapped": "$summary - $tag",
+      "not_mapped": "$reason - $tag",
       "presets": {
         "default": "Moved page"
       }

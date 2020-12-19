@@ -7,8 +7,7 @@ const instances = {};
 const getBotInstance = (guild, config) => {
     if (!instances[guild.id]) {
         instances[guild.id] = new MediaWikiJS({
-            server: config.url,
-            path: config.path,
+            url: config.url,
             botUsername: config.credentials.username,
             botPassword: config.credentials.password
         });

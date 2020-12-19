@@ -11,8 +11,7 @@ class Action {
         if (!this.config) throw new Error(`Missing config for guild ${this.message.guild.name} (ID: ${this.message.guild.id})`);
 
         this.bot = new MediaWikiJS({
-            server: this.config.url,
-            path: this.config.path || '',
+            url: this.config.url,
             botUsername: this.config.credentials.username,
             botPassword: this.config.credentials.password
         });
