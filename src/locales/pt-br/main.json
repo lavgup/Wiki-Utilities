@@ -1,0 +1,191 @@
+{
+    "commands": {
+        "help": {
+            "description": {
+                "content": "",
+                "usages": [
+                    "",
+                    ""
+                ]
+            },
+            "list": "",
+            "more_info": "",
+            "command_help": "",
+            "no_description": "",
+            "aliases": "",
+            "usages": "",
+            "examples": ""
+        },
+        "ping": {
+            "description": ""
+        },
+        "block": {
+            "description": {
+                "content": "",
+                "usages": [
+                    "",
+                    ""
+                ]
+            },
+            "blocking": "",
+            "unblocking": "",
+            "unblock_success": "",
+            "already_blocked": "",
+            "not_blocked": "",
+            "error": "",
+            "block_success": "",
+            "prompt": {
+                "user": "",
+                "expiry": {
+                    "start": "",
+                    "retry": ""
+                }
+            }
+        },
+        "category": {
+            "description": {
+                "content": "",
+                "usages": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "fetching": "",
+            "category": "",
+            "empty": "",
+            "prompt": ""
+        },
+        "delete": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "deleting": "",
+            "success": "",
+            "prompt": ""
+        },
+        "edit": {
+            "description": {
+                "content": "",
+                "usages": [
+                    "",
+                    ""
+                ]
+            },
+            "editing": "",
+            "success": "",
+            "prompt": {
+                "page": "",
+                "content": "",
+                "position": ""
+            }
+        },
+        "move": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "moving": "",
+            "success": "",
+            "prompt": {
+                "old": "",
+                "new": ""
+            }
+        },
+        "protect": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "protecting": "",
+            "success": "",
+            "prompt": {
+                "page": "",
+                "expiry": {
+                    "start": "",
+                    "retry": ""
+                },
+                "usergroup": {
+                    "start": "",
+                    "retry": "",
+                    "sysop": "",
+                    "autoconfirmed": ""
+                }
+            }
+        },
+        "undelete": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "restoring": "",
+            "success": "",
+            "prompt": ""
+        },
+        "eval": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "prompt": ""
+        },
+        "ssh": {
+            "description": {
+                "content": "",
+                "usages": [
+                    ""
+                ]
+            },
+            "prompt": "",
+            "long": ""
+        }
+    },
+    "handler": {
+        "categories": {
+            "client": "",
+            "owner": "",
+            "utilities": "",
+            "wiki": ""
+        },
+        "prompt": {
+            "cancel": "",
+            "cancelled": "",
+            "ended": "",
+            "timeout": ""
+        },
+        "inhibitors": {
+            "wiki_action": {
+                "no_wiki": "",
+                "no_roles": "",
+                "need_roles": "",
+                "no_credentials": ""
+            }
+        },
+        "listeners": {
+            "message_reaction_add": {
+                "rcgcdw_summary": "",
+                "error_occurred": ""
+            },
+            "missing_permissions": {
+                "user_missing": "",
+                "client_missing": ""
+            }
+        }
+    },
+    "general": {
+        "no_reason": "",
+        "no_summary": "",
+        "more": ""
+    }
+}
