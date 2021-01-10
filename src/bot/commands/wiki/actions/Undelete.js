@@ -18,11 +18,13 @@ class UndeleteAction extends Action {
                 title: this.args.page,
                 reason: this.args.reason
             });
+
+            await initMessage.edit(i18n.t('commands.undelete.success'));
+
+            return this.bot.logout();
         } catch (err) {
             return initMessage.edit(err.message);
         }
-
-        return initMessage.edit(i18n.t('commands.undelete.success'));
     }
 }
 

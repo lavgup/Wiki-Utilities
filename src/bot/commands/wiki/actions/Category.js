@@ -21,9 +21,7 @@ class CategoryAction extends Action {
                 `));
             }
 
-            pages = pages.map(page => {
-                return `[${page}](<${this.bot.server}/wiki/${encodeURIComponent(page)})`;
-            });
+            pages = pages.map(page => `[${page}](<${this.bot.server}/wiki/${encodeURIComponent(page)})`);
 
             return latestMessage.edit('', {
                 embed: {

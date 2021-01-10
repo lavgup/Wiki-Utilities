@@ -32,13 +32,13 @@ class ProtectCommand extends Command {
                     flag: ['--group=', '-g='],
                     prompt: {
                         start: message => this.client.fmt.stripIndents(`
-                        ${i18n.t('commands.protect.prompt.usergroup.start', { author: `<@${message.author.id}` })}
+                        ${i18n.t('commands.protect.prompt.usergroup.start', { author: message.author.toString() })}
                         
                         ${i18n.t('commands.protect.prompt.usergroup.sysop')}
                         ${i18n.t('commands.protect.prompt.usergroup.autoconfirmed')}
                         `),
                         retry: message => this.client.fmt.stripIndents(`
-                        ${i18n.t('commands.protect.prompt.usergroup.retry', { author: `<@${message.author.id}` })}
+                        ${i18n.t('commands.protect.prompt.usergroup.retry', { author: message.author.toString() })}
                         
                         ${i18n.t('commands.protect.prompt.usergroup.sysop')}
                         ${i18n.t('commands.protect.prompt.usergroup.autoconfirmed')}

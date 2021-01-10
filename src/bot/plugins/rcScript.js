@@ -1,6 +1,6 @@
 const i18n = require('i18next');
 const Plugin = require('../structs/Plugin');
-const MediaWikiJS = require('@sidemen19/mediawiki.js');
+const { MediaWikiJS } = require('@sidemen19/mediawiki.js');
 
 const instances = {};
 

@@ -5,11 +5,17 @@ class BlockAction extends Action {
     constructor(data) {
         super(data);
         this.message = data.message;
+        this.client = data.message.client;
         this.args = data.args;
     }
 
     async exec() {
-        const type = this.args.unblock ? i18n.t('commands.block.unblocking') : i18n.t('commands.block.blocking');
+        let type;
+
+        if (this.args.glock) type = i18n.t('commands.block.locking');
+        else if (this.args.unblock) type = i18n.t('commands.block.unblocking');
+        else type = i18n.t('commands.block.blocking');
+
         const initMessage = await this.message.util.send(type);
 
         await this.bot.login(this.creds.username, this.creds.password);
@@ -30,26 +36,27 @@ class BlockAction extends Action {
                         user: this.args.user,
                         reason: this.args.reason
                     });
-                    return initMessage.edit(i18n.t('commands.block.unblock_success'));
-                }
 
-                return initMessage.edit(i18n.t('commands.block.already_blocked'));
+                    await initMessage.edit(i18n.t('commands.block.unblock_success'));
+                } else initMessage.edit(i18n.t('commands.block.already_blocked'));
             } else if (this.args.unblock) {
-                return initMessage.edit(i18n.t('commands.block.not_blocked'));
-            }
-
-            return initMessage.edit(this.client.fmt.stripIndents(`
-            ${i18n.t('commands.block.error', { type: type })}
+                await initMessage.edit(i18n.t('commands.block.not_blocked'));
+            } else {
+                initMessage.edit(this.client.fmt.stripIndents(`
+            ${i18n.t('commands.block.error', { type: type.toLowerCase() })}
             \`\`\`apache
             ${body.error.code}
             
             ${body.error.info}
             \`\`\`
             `));
+            }
+        } else {
+            await this.message.util.send(i18n.t('commands.block.block_success'));
         }
 
-        return this.message.util.send(i18n.t('commands.block.block_success'));
+        return this.bot.logout();
     }
- }
+}
 
 module.exports = BlockAction;

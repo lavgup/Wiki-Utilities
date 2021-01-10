@@ -19,11 +19,13 @@ class MoveAction extends Action {
                 to: this.args.new,
                 reason: this.args.reason
             });
+
+            await initMessage.edit(i18n.t('commands.move.success'));
+
+            return this.bot.logout();
         } catch (err) {
             return initMessage.edit(err.message);
         }
-
-        return initMessage.edit(i18n.t('commands.move.success'));
     }
 }
 
