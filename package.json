@@ -1,6 +1,6 @@
 {
   "name": "wiki-utilities",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "Discord bot for taking administrative actions on a wiki through Discord.",
   "main": "src/bot/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "author": "Sidemen19",
   "license": "MIT",
   "dependencies": {
-    "@sidemen19/mediawiki.js": "^4.2.0",
+    "@sidemen19/mediawiki.js": "^4.2.1",
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.5.1",
     "got": "^11.8.1",
