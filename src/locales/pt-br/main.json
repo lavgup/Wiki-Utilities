@@ -1,0 +1,193 @@
+{
+    "commands": {
+        "help": {
+            "description": {
+                "content": "Enviar informações sobre os comandos do bot.",
+                "usages": [
+                    " ",
+                    "[comando]"
+                ]
+            },
+            "list": "Uma lista de todos os comandos disponíveis.",
+            "more_info": "Para obter mais informações sobre um comando específico, envie `{{prefix}}{{alias}} <comando>`.",
+            "command_help": "{{command}} Ajuda do Comando",
+            "no_description": "Nenhuma descrição fornecida.",
+            "aliases": "Aliases",
+            "usages": "Usos",
+            "examples": "Exemplos"
+        },
+        "ping": {
+            "description": "Obter o ping do robô."
+        },
+        "block": {
+            "description": {
+                "content": "Bloquear um determinado usuário na wiki.",
+                "usages": [
+                    "<usuário> <expiração>",
+                    "<usuário> <expiração> <motivo>"
+                ]
+            },
+            "blocking": "Bloqueado usuário…",
+            "unblocking": "Desbloqueando usuário…",
+            "unblock_success": "Usuário desbloqueado com sucesso.",
+            "already_blocked": "Esse usuário já está bloqueado! Para desbloqueá-los, você pode passar a marcação `--unblock`.",
+            "not_blocked": "Esse usuário não está bloqueado!",
+            "error": "Erro ocorreu enquanto {{type}}",
+            "block_success": "Usuário bloqueado com sucesso!",
+            "prompt": {
+                "user": "{{- author}}, qual usuário você deseja bloquear?",
+                "expiry": {
+                    "start": "{{- author}}, por quanto tempo devo bloquear este usuário?",
+                    "retry": "{{- author}}, isso não parece um tempo válido!"
+                }
+            }
+        },
+        "category": {
+            "description": {
+                "content": "Lista todas as páginas em uma determinada categoria no conjunto da wiki.",
+                "usages": [
+                    "<categoria>",
+                    "--cfd",
+                    "--stub"
+                ]
+            },
+            "fetching": "Obtendo páginas na categoria **{{category}}**…",
+            "category": "Categoria",
+            "empty": "A categoria **{{category}}** está vazia!",
+            "prompt": "{{- author}}, de qual categoria devo listar as páginas?"
+        },
+        "delete": {
+            "description": {
+                "content": "Exclui uma determinada página na wiki definida, com um motivo opcional para exclusão.",
+                "usages": [
+                    "<página> [motivo]"
+                ]
+            },
+            "deleting": "Excluindo página…",
+            "success": "Página excluída com sucesso!",
+            "prompt": "{{- author}}, qual página devo ecluir?"
+        },
+        "edit": {
+            "description": {
+                "content": "Editar uma determinada página na wiki definida, com a opção de anexar ou preceder o conteúdo.",
+                "usages": [
+                    "<página> <conteúdo> --prepend",
+                    "<página> <conteúdo> --append"
+                ]
+            },
+            "editing": "Editando página…",
+            "success": "Conteúdo da página editado com sucesso.",
+            "prompt": {
+                "page": "{{- author}}, qual página devo editar?",
+                "content": "{{- author}}, o que você deseja adicionar a {{page}}?",
+                "position": "{{- author}}, você deseja `prepend` ou `append` este conteúdo a {{page}}?"
+            }
+        },
+        "move": {
+            "description": {
+                "content": "Mover (renomear) uma página na wiki definida.",
+                "usages": [
+                    "<antiga_página> <nova_página> [-r=motivo]"
+                ]
+            },
+            "moving": "Movendo página…",
+            "success": "Página movida com sucesso!",
+            "prompt": {
+                "old": "{{- author}}, qual página devo mover?",
+                "new": "{{- author}}, qual deve ser o novo nome da página?"
+            }
+        },
+        "protect": {
+            "description": {
+                "content": "Proteger uma determinada página da wiki com expiração opcional.",
+                "usages": [
+                    "<página> <tempo> [-r=<morivo>]"
+                ]
+            },
+            "protecting": "Protegendo página…",
+            "success": "Página protegida com sucesso!",
+            "prompt": {
+                "page": "{{- author}}, qual página devo proteger?",
+                "expiry": {
+                    "start": "{{- author}}, por quanto tempo esta página será protegida?",
+                    "retry": "{{- author}}, isso não parece um tempo válido!"
+                },
+                "usergroup": {
+                    "start": "{{- author}}, qual grupo de usuários terá permissão para editar esta página?",
+                    "retry": "{{- author}}, isso não parece um grupo de usuários válido!",
+                    "sysop": "`sysop` apenas para administradores, ou",
+                    "autoconfirmed": "`autoconfirmed` apenas para usuários autoconfirmados."
+                }
+            }
+        },
+        "undelete": {
+            "description": {
+                "content": "Restaura/desfaz a exclusão de uma determinada página na wiki definida.",
+                "usages": [
+                    "<página> <motivo>"
+                ]
+            },
+            "restoring": "Restaurando página…",
+            "success": "Página restaurada com sucesso!",
+            "prompt": "{{- author}}, qual página devo desproteger?"
+        },
+        "eval": {
+            "description": {
+                "content": "Avaliar o código JavaScript.",
+                "usages": [
+                    "<código>"
+                ]
+            },
+            "prompt": "{{- author}}, que código devo avaliar?"
+        },
+        "ssh": {
+            "description": {
+                "content": "Executa comandos de terminal do Discord.",
+                "usages": [
+                    "<comando>"
+                ]
+            },
+            "prompt": "{{- author}}, digite um comando para eu executar!",
+            "long": "Resultado muito longo para enviar: {{- link}}"
+        }
+    },
+    "handler": {
+        "categories": {
+            "client": "Cliente",
+            "owner": "Proprietário",
+            "utilities": "Utilidades",
+            "wiki": "Wiki"
+        },
+        "prompt": {
+            "cancel": "Digite `cancel` para cancelar o comando.",
+            "cancelled": "Tudo bem, o comando foi cancelado.",
+            "ended": "Mais de 3 tentativas e você ainda não entendeu. O comando foi cancelado.",
+            "timeout": "Você demorou muito para responder, o comando foi cancelado."
+        },
+        "inhibitors": {
+            "wiki_action": {
+                "no_wiki": "Ainda não existe uma wiki configurada para este servidor!",
+                "no_roles": "Este comando requer que uma função seja definida e fornecida aos usuários para evitar abusos.",
+                "need_roles": "Você precisa de uma das funções a seguir para usar este comando.",
+                "no_credentials": "Não estou logado como um robô na wiki!"
+            }
+        },
+        "listeners": {
+            "message_reaction_add": {
+                "rcgcdw_summary": "Ação realizada por meio do Discord - {{user}}",
+                "error_occurred": "Ocorreu um erro: {{error}}"
+            },
+            "missing_permissions": {
+                "user_missing": "você não tem a seguinte permissão para executar este comando:",
+                "user_missing_plural": "você não tem as seguintes permissões para executar este comando:",
+                "client_missing": "Não tenho a seguinte permissão para executar este comando:",
+                "client_missing_plural": "Não tenho as seguintes permissões para executar este comando:"
+            }
+        }
+    },
+    "general": {
+        "no_reason": "Nenhum motivo fornecido",
+        "no_summary": "Nenhum resumo fornecido",
+        "more": "Mais"
+    }
+}
