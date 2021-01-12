@@ -19,9 +19,7 @@ class DeleteAction extends Action {
                 reason: this.args.reason
             });
 
-            await initMessage.edit(i18n.t('commands.delete.success'));
-
-            return this.bot.logout();
+            return initMessage.edit(i18n.t('commands.delete.success'));
         } catch (err) {
             return initMessage.edit(err.message);
         }

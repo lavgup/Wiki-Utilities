@@ -30,8 +30,7 @@ class EditAction extends Action {
                 });
             }
 
-            await latestMessage.edit(i18n.t('commands.edit.success'));
-            return this.bot.logout();
+            return latestMessage.edit(i18n.t('commands.edit.success'));
         } catch (err) {
             return latestMessage.edit(err.message);
         }

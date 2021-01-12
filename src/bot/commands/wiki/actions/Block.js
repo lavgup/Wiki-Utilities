@@ -37,25 +37,25 @@ class BlockAction extends Action {
                         reason: this.args.reason
                     });
 
-                    await initMessage.edit(i18n.t('commands.block.unblock_success'));
-                } else initMessage.edit(i18n.t('commands.block.already_blocked'));
+                    return initMessage.edit(i18n.t('commands.block.unblock_success'));
+                }
+
+                return initMessage.edit(i18n.t('commands.block.already_blocked'));
             } else if (this.args.unblock) {
-                await initMessage.edit(i18n.t('commands.block.not_blocked'));
-            } else {
-                initMessage.edit(this.client.fmt.stripIndents(`
-            ${i18n.t('commands.block.error', { type: type.toLowerCase() })}
+                return initMessage.edit(i18n.t('commands.block.not_blocked'));
+            }
+
+            return initMessage.edit(this.client.fmt.stripIndents(`
+            ${i18n.t('commands.block.error', { type: type })}
             \`\`\`apache
             ${body.error.code}
             
             ${body.error.info}
             \`\`\`
             `));
-            }
-        } else {
-            await this.message.util.send(i18n.t('commands.block.block_success'));
         }
 
-        return this.bot.logout();
+        return this.message.util.send(i18n.t('commands.block.block_success'));
     }
 }
 

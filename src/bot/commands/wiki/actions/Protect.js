@@ -23,8 +23,7 @@ class ProtectAction extends Action {
                 reason: this.args.reason
             });
 
-            await initMessage.edit(i18n.t('commands.protect.success'));
-            return this.bot.logout();
+            return initMessage.edit(i18n.t('commands.protect.success'));
         } catch (err) {
             return initMessage.edit(err.message);
         }
