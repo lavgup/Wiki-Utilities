@@ -4,7 +4,6 @@
             "description": {
                 "content": "Sends information on the bot's commands.",
                 "usages": [
-                    " ",
                     "[command]"
                 ]
             },
