@@ -37,12 +37,13 @@ class HelpCommand extends Command {
                 });
             }
 
-            if (command.description?.usages?.length) {
-                embed.fields.push({
-                    name: i18n.t('commands.help.usages'),
-                    value: command.description.usages.map(usage => `${prefix}${command.aliases[0]} ${this.formatUsage(usage)}`).join('\n')
-                });
-            }
+            const usages = command.description.usages || [];
+            usages.unshift('');
+
+            embed.fields.push({
+                name: i18n.t('commands.help.usages'),
+                value: usages.map(usage => `${prefix}${command.aliases[0]} ${this.formatUsage(usage)}`).join('\n')
+            });
         } else {
             embed.description = `${i18n.t('commands.help.list')}\n${i18n.t('commands.help.more_info', { prefix: prefix, alias: this.aliases[0] } )}`;
 

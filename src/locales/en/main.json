@@ -133,10 +133,7 @@
         },
         "whoami": {
             "description": {
-                "content": "Returns information on the current logged in user.",
-                "usages": [
-                    ""
-                ]
+                "content": "Returns information on the current logged in user."
             },
             "loading": "Fetching info…",
             "logged_in": "Logged in as **{{user}}**, with an editcount of **{{editcount}}**. I am a **{{usergroup}}**. ✅",
