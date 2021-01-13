@@ -30,8 +30,8 @@ class DeleteCommand extends Command {
 
     exec(message, args) {
         return new DeleteAction({
-            message: message,
-            args: args
+            message,
+            args
         }).commit();
     }
 }

@@ -4,8 +4,6 @@ const Action = require('./Action');
 class BlockAction extends Action {
     constructor(data) {
         super(data);
-        this.message = data.message;
-        this.client = data.message.client;
         this.args = data.args;
     }
 
