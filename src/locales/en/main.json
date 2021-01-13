@@ -134,9 +134,11 @@
         "whoami": {
             "description": {
                 "content": "Returns information on the current logged in user.",
-                "usages": [""]
+                "usages": [
+                    ""
+                ]
             },
-            "loading": "Fetching info...",
+            "loading": "Fetching info…",
             "logged_in": "Logged in as **{{user}}**, with an editcount of **{{editcount}}**. I am a **{{usergroup}}**. ✅",
             "logged_in_vowel": "Logged in as **{{user}}**, with an editcount of **{{editcount}}**. I am an **{{usergroup}}**. ✅",
             "not_logged_in": "Not logged in. ❌"
