@@ -4,6 +4,7 @@
             "description": {
                 "content": "Wysyła informacje na temat komend bota.",
                 "usages": [
+                    "[komenda]",
                     "[komenda]"
                 ]
             },
