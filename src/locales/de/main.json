@@ -4,6 +4,7 @@
             "description": {
                 "content": "Sendet Informationen zu Bot Befehlen.",
                 "usages": [
+                    "[Befehl]",
                     "[Befehl]"
                 ]
             },
