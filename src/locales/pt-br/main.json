@@ -148,6 +148,15 @@
             },
             "prompt": "{{- author}}, digite um comando para eu executar!",
             "long": "Resultado muito longo para enviar: {{- link}}"
+        },
+        "whoami": {
+            "not_logged_in": "Não entrado. ❌",
+            "logged_in_vowel": "Entrado como **{{user}}**, com uma contagem de edições de **{{editcount}}**. Eu sou um **{{usergroup}}**. ✅",
+            "logged_in": "Entrado como **{{user}}**, com uma contagem de edições de **{{editcount}}**. Eu sou um **{{usergroup}}**. ✅",
+            "loading": "Buscando informações…",
+            "description": {
+                "content": "Retorna informações sobre o usuário conectado no momento."
+            }
         }
     },
     "handler": {
