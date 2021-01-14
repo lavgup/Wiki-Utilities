@@ -6,6 +6,7 @@
   "guilds": {
     "390342113042366465": {
       "url": "https://en.wikipedia.org/w/api.php",
+      "articlePath": "https://en.wikipedia.org/wiki/BMW/",
       "allowed_roles": [""],
       "blacklisted_users": [""],
       "categories": {
@@ -14,8 +15,7 @@
       },
       "defaults": {
         "allow_user_talk": false,
-        "autoblock": true,
-        "block_user_talk": true
+        "autoblock": true
       },
       "rcgcdw_extension": {
         "enabled": false,
@@ -26,6 +26,14 @@
         "emojis": {
           "delete": ["\uD83C\uDDE9"],
           "revert": ["\uD83C\uDDF7"],
+          "block": ["\uD83C\uDDE7"]
+        }
+      },
+      "reports": {
+        "enabled": true,
+        "channel_id": "",
+        "emojis": {
+          "delete": ["\uD83C\uDDE9"],
           "block": ["\uD83C\uDDE7"]
         }
       },

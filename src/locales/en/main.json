@@ -181,16 +181,22 @@
             }
         },
         "listeners": {
-            "message_reaction_add": {
-                "rcgcdw_summary": "Action taken through Discord - {{user}}",
-                "error_occurred": "Error occurred: {{error}}"
-            },
             "missing_permissions": {
                 "user_missing": "you am missing the following permission to run this command:",
                 "user_missing_plural": "you am missing the following permissions to run this command:",
                 "client_missing": "I am missing the following permission to run this command:",
                 "client_missing_plural": "I am missing the following permissions to run this command:"
             }
+        }
+    },
+    "plugins": {
+        "rc_script": {
+            "summary": "Action taken through Discord - {{user}}",
+            "error": "Error occurred: {{error}}"
+        },
+        "reports": {
+            "missing": "{{- user}}, could not find a {{type}} link from the message reacted to.",
+            "user": "user"
         }
     },
     "general": {

@@ -181,16 +181,22 @@
             }
         },
         "listeners": {
-            "message_reaction_add": {
-                "rcgcdw_summary": "Ação realizada por meio do Discord - {{user}}",
-                "error_occurred": "Ocorreu um erro: {{error}}"
-            },
             "missing_permissions": {
                 "user_missing": "você não tem a seguinte permissão para executar este comando:",
                 "user_missing_plural": "você não tem as seguintes permissões para executar este comando:",
                 "client_missing": "Não tenho a seguinte permissão para executar este comando:",
                 "client_missing_plural": "Não tenho as seguintes permissões para executar este comando:"
             }
+        }
+    },
+    "plugins": {
+        "rc_script": {
+            "summary": "Ação realizada por meio do Discord - {{user}}",
+            "error": "Ocorreu um erro: {{error}}"
+        },
+        "reports": {
+            "missing": "",
+            "user": ""
         }
     },
     "general": {

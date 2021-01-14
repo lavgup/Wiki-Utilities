@@ -195,16 +195,22 @@
             }
         },
         "listeners": {
-            "message_reaction_add": {
-                "rcgcdw_summary": "काम डिस्कॉर्ड के ज़रिये हुआ है - {{user}}",
-                "error_occurred": "त्रुटि आई - {{error}}"
-            },
             "missing_permissions": {
                 "user_missing": "इस कमांड का इस्तेमाल करने के लिए आपको इस अनुमति की ज़रूरत है:",
                 "user_missing_plural": "इस कमांड का इस्तेमाल करने के लिए आपको इन अनुमतियों की ज़रूरत है:",
                 "client_missing": "इस कमांड का इस्तेमाल करने के लिए मुझे इस अनुमति की ज़रूरत है:",
                 "client_missing_plural": "इस कमांड का इस्तेमाल करने के लिए मुझे इन अनुमतियों की ज़रूरत है:"
             }
+        }
+    },
+    "plugins": {
+        "rc_script": {
+            "summary": "काम डिस्कॉर्ड के ज़रिये हुआ है - {{user}}",
+            "error": "त्रुटि आई - {{error}}"
+        },
+        "reports": {
+            "missing": "",
+            "user": ""
         }
     },
     "general": {

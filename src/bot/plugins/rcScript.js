@@ -1,20 +1,11 @@
 const i18n = require('i18next');
 const Plugin = require('../structs/Plugin');
-const { MediaWikiJS } = require('@sidemen19/mediawiki.js');
-
-const instances = {};
-
-const getBotInstance = (guild, config) => {
-    if (!instances[guild.id]) {
-        instances[guild.id] = new MediaWikiJS({
-            url: config.url,
-            botUsername: config.credentials.username,
-            botPassword: config.credentials.password
-        });
-    }
-
-    return instances[guild.id];
-};
+const {
+    getBotInstance,
+    isNotAllowed,
+    getTypeFromEmoji,
+    getReason
+} = require('./utils');
 
 class RCScript extends Plugin {
     constructor(options) {
@@ -52,33 +43,19 @@ class RCScript extends Plugin {
         const member = await message.guild.members.fetch(user);
 
         // If user isn't permitted to take administrative actions
-        if (
-            (
-                !config.allowed_roles.some(role => member.roles.cache.has(role))
-                && !this.client.config.owners.includes(user.id)
-            )
-            || config.blacklisted_users.includes(user.id)
-        ) return;
+        const notAllowed = isNotAllowed({
+            guildConfig: config,
+            config: this.config,
+            member,
+            user
+        });
 
-        let type;
-        for (const [key, value] of Object.entries(this.config.rcgcdw_extension.emojis)) {
-            if (!Array.isArray(value)) continue;
+        if (notAllowed) return;
 
-            if (value.some(t => t.includes(emoji.name))) {
-                type = key;
-            }
-        }
+        const type = getTypeFromEmoji(emoji, config.rcgcdw_extension.emojis);
         if (!type) return;
 
-        const reason = this.client.config.user_map.enabled
-        && this.client.config.user_map[user.id]
-            ? i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
-                user: `[[User:${this.client.config.user_map[user.id]}|${this.client.config.user_map[user.id]}]]`
-            })
-            : i18n.t('handler.listeners.message_reaction_add.rcgcdw_summary', {
-                user: user.tag
-            });
-
+        const reason = getReason(this.client.config, user);
 
         this.bot = getBotInstance(message.guild, this.config);
 
@@ -114,21 +91,20 @@ class RCScript extends Plugin {
 
         if (!page) return message.react(this.cross);
 
-        await message.react(this.loading);
-
         try {
+            await message.react(this.loading);
             await this.bot.login(this.config.credentials.username, this.config.credentials.password);
 
             await this.bot.delete({
                 title: page,
-                reason: reason
+                reason
             });
 
             await message.react(this.check);
         } catch (err) {
             await message.react(this.cross);
             user.send(
-                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+                i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {
             await message.reactions.cache.get(this.loading).remove();
@@ -174,7 +150,7 @@ class RCScript extends Plugin {
         } catch (err) {
             await message.react(this.cross);
             user.send(
-                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+                i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {
             await message.reactions.cache.get(this.loading).remove();
@@ -216,7 +192,7 @@ class RCScript extends Plugin {
         } catch (err) {
             await message.react(this.cross);
             user.send(
-                i18n.t('handler.listeners.message_reaction_add.error_occurred', { error: err.message })
+                i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {
             await message.reactions.cache.get(this.loading).remove();

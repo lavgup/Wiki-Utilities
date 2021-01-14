@@ -166,10 +166,6 @@
             }
         },
         "listeners": {
-            "message_reaction_add": {
-                "rcgcdw_summary": "Akcja wykonana przez Discord - {{user}}",
-                "error_occurred": "Wykryto błąd: {{error}}"
-            },
             "missing_permissions": {
                 "user_missing_0": "nie posiadam następującego zezwolenia aby wykonać tę komendę:",
                 "user_missing_1": "nie posiadam następujących zezwoleń aby wykonać tę komendę:",
@@ -178,6 +174,16 @@
                 "client_missing_1": "Brakuje mi następujących uprawnień aby wykonać tę komendę:",
                 "client_missing_2": "Brakuje mi następujących uprawnień aby wykonać tę komendę:"
             }
+        }
+    },
+    "plugins": {
+        "rc_script": {
+            "summary": "Akcja wykonana przez Discord - {{user}}",
+            "error": "Wykryto błąd: {{error}}"
+        },
+        "reports": {
+            "missing": "",
+            "user": ""
         }
     },
     "general": {

@@ -152,14 +152,20 @@
             }
         },
         "listeners": {
-            "message_reaction_add": {
-                "rcgcdw_summary": "",
-                "error_occurred": ""
-            },
             "missing_permissions": {
                 "user_missing": "",
                 "client_missing": ""
             }
+        }
+    },
+    "plugins": {
+        "rc_script": {
+            "summary": "",
+            "error": ""
+        },
+        "reports": {
+            "missing": "",
+            "user": ""
         }
     },
     "general": {
