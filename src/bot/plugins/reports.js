@@ -72,7 +72,7 @@ class ReportsPlugin extends Plugin {
 
     async handleDelete(message, user, reason) {
         // eslint-disable-next-line prefer-regex-literals
-        const ARTICLE_REGEX = new RegExp(`${this.config.articlePath}([a-zA-Z0-9-~]+)`);
+        const ARTICLE_REGEX = new RegExp(`${this.config.articlePath}([^> ]+)`);
 
         const matches = message.content.match(ARTICLE_REGEX);
         if (!matches?.length) return message.util.send(i18n.t('plugins.reports.missing', {
@@ -105,7 +105,7 @@ class ReportsPlugin extends Plugin {
         const userTranslated = capitalise(i18n.t('plugins.reports.user'));
 
         // eslint-disable-next-line prefer-regex-literals
-        const USER_REGEX = new RegExp(`${this.config.articlePath}${userTranslated}:([a-zA-Z0-9-~]+)`);
+        const USER_REGEX = new RegExp(`${this.config.articlePath}${userTranslated}:([^> ]+)`);
 
         const matches = message.content.match(USER_REGEX);
         if (!matches?.length) return message.util.send(i18n.t('plugins.reports.missing', {
