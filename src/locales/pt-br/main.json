@@ -195,8 +195,8 @@
             "error": "Ocorreu um erro: {{error}}"
         },
         "reports": {
-            "missing": "",
-            "user": ""
+            "missing": "{{- user}}, não conseguiu encontrar um link {{type}} da mensagem à qual reagiu.",
+            "user": "usuário"
         }
     },
     "general": {
