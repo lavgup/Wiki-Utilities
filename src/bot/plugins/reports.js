@@ -94,7 +94,7 @@ class ReportsPlugin extends Plugin {
             await message.react(this.check);
         } catch (err) {
             await message.react(this.cross);
-            await user.send(err.message);
+            await user?.send(err.message).catch(() => {});
         } finally {
             await message.reactions.cache.get(this.loading)?.remove();
         }
@@ -130,7 +130,7 @@ class ReportsPlugin extends Plugin {
             await message.react(this.check);
         } catch (err) {
             await message.react(this.cross);
-            await user.send(err.message);
+            await user?.send(err.message).catch(() => {});
         } finally {
             await message.reactions.cache.get(this.loading)?.remove();
         }

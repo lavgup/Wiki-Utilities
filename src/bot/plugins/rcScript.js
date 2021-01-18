@@ -45,7 +45,7 @@ class RCScript extends Plugin {
         // If user isn't permitted to take administrative actions
         const notAllowed = isNotAllowed({
             guildConfig: config,
-            config: this.config,
+            config: this.client.config,
             member,
             user
         });
@@ -103,7 +103,7 @@ class RCScript extends Plugin {
             await message.react(this.check);
         } catch (err) {
             await message.react(this.cross);
-            user.send(
+            await user?.send(
                 i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {
@@ -149,7 +149,7 @@ class RCScript extends Plugin {
             await message.react(this.check);
         } catch (err) {
             await message.react(this.cross);
-            user.send(
+            await user?.send(
                 i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {
@@ -190,8 +190,9 @@ class RCScript extends Plugin {
 
             await message.react(this.check);
         } catch (err) {
+            console.log(err);
             await message.react(this.cross);
-            user.send(
+            await user?.send(
                 i18n.t('plugins.rc_script.error', { error: err.message })
             ).catch(() => {});
         } finally {

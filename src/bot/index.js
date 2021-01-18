@@ -9,6 +9,6 @@ const client = new WUClient({
     ...config
 });
 
-process.on('unhandledRejection', error => client.logger.error('Uncaught Promise Rejection', error));
+process.on('unhandledRejection', error => client.logger.error('Uncaught Promise Rejection:', error));
 
 client.start().then(() => client.logger.info('Started client!'));
