@@ -209,8 +209,8 @@
             "error": "त्रुटि आई - {{error}}"
         },
         "reports": {
-            "missing": "",
-            "user": ""
+            "missing": "{{- user}}, रियेक्ट किए गए मैसेज से कोई {{type}} लिंक नहीं मिला।",
+            "user": "सदस्य"
         }
     },
     "general": {
