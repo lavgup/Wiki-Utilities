@@ -13,7 +13,7 @@ Wiki Utilities is a Discord bot, which allows wiki (think Fandom, Wikipedia) adm
 * Integration with [RcGcDw](https://gitlab.com/piotrex43/RcGcDw/) (see [#110](https://gitlab.com/piotrex43/RcGcDw/-/issues/110)), allowing admins to lazily react to log messages with emojis, to either block the user, revert the edit, or delete the page.
 
 ### Setup
-See [the wiki](https://github.com/Sidemen19/Wiki-Utilities/wiki) for setting up and configuring Wiki Utilities.
+See [the wiki](https://github.com/lavgup/Wiki-Utilities/wiki) for setting up and configuring Wiki Utilities.
 
 ### Translations
 [<img src="https://weblate.frisk.space/widgets/wiki-utilities/-/multi-auto.svg" alt="Translation status" width="80%" />](https://weblate.frisk.space/engage/wiki-utilities/?utm_source=widget)

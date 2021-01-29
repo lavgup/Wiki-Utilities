@@ -1,4 +1,4 @@
-const { MediaWikiJS } = require('@sidemen19/mediawiki.js');
+const { MediaWikiJS } = require('@lavgup/mediawiki.js');
 
 class Action {
     constructor(data) {

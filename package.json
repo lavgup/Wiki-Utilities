@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sidemen19/Wiki-Utilities.git"
+    "url": "git+https://github.com/lavgup/Wiki-Utilities.git"
   },
   "keywords": [
     "discord",
@@ -24,10 +24,10 @@
     "fandom",
     "mediawiki"
   ],
-  "author": "Sidemen19",
+  "author": "lavgup",
   "license": "MIT",
   "dependencies": {
-    "@sidemen19/mediawiki.js": "^5.0.0",
+    "@lavgup/mediawiki.js": "^1.0.0",
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.5.1",
     "got": "^11.8.1",

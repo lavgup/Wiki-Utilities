@@ -1,5 +1,5 @@
 const i18n = require('i18next');
-const { MediaWikiJS } = require('@sidemen19/mediawiki.js');
+const { MediaWikiJS } = require('@lavgup/mediawiki.js');
 const instances = {};
 
 module.exports.getBotInstance = (guild, config) => {
