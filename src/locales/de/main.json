@@ -148,6 +148,15 @@
                 ],
                 "content": "Wertet JavaScript-Code aus."
             }
+        },
+        "whoami": {
+            "not_logged_in": "Nicht angemeldet. ❌",
+            "logged_in_vowel": "Angemeldet als **{{user}}**, mit **{{editcount}}** Bearbeitungen. Ich bin ein **{{usergroup}}**. ✅",
+            "logged_in": "Angemeldet als **{{user}}**, mit **{{editcount}}** Bearbeitungen. Ich bin ein **{{usergroup}}**. ✅",
+            "loading": "Informationen abrufen…",
+            "description": {
+                "content": "Gibt Informationen zum angemeldeten Nutzer zurück."
+            }
         }
     },
     "handler": {
@@ -186,8 +195,8 @@
             "error": "Fehler aufgetreten: {{error}}"
         },
         "reports": {
-            "missing": "",
-            "user": ""
+            "missing": "{{- user}}, konnte keinen {{type}} Link von der reagierten Nachricht finden.",
+            "user": "Nutzer"
         }
     },
     "general": {
