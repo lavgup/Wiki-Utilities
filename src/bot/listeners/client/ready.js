@@ -1,4 +1,6 @@
 const { Listener } = require('discord-akairo');
+const { version } = require('../../../../package.json');
+const { prefixes, status } = require('../../../../config.json');
 
 class ReadyListener extends Listener {
     constructor() {
@@ -16,10 +18,24 @@ class ReadyListener extends Listener {
         // noinspection JSUnresolvedVariable
         this.client.user.setPresence({
             activity: {
-                name: `${this.client.config.prefixes[0]}help`,
-                type: 'WATCHING'
+                name: this.replaceVars(status.content),
+                type: status.type.toUpperCase()
             }
         }).then(() => {});
+    }
+
+    replaceVars(content) {
+        const replacements = {
+            '$prefix': prefixes[0],
+            '$version': version,
+            '$guilds': this.client.guilds.cache.size
+        };
+
+        for (const [key, val] of Object.entries(replacements)) {
+            if (val) content = content.replace(key, val);
+        }
+
+        return content;
     }
 }
 

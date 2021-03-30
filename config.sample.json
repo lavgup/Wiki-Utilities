@@ -2,6 +2,10 @@
   "token": "",
   "prefixes": ["wu!"],
   "lang": "en",
+  "status": {
+    "type": "watching",
+    "content": "$prefixhelp"
+  },
   "owners": [""],
   "guilds": {
     "390342113042366465": {
