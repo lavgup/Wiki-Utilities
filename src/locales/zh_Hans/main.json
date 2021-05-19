@@ -2,204 +2,204 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "发送有关机器人命令的信息。",
                 "usages": [
-                    ""
+                    "[命令]"
                 ]
             },
-            "list": "",
-            "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "list": "所有可用命令的列表。",
+            "more_info": "若想获得有关某命令的更多信息，请发送`{{prefix}}{{alias}} <命令>`。",
+            "command_help": "{{command}}命令帮助",
+            "no_description": "没有提供描述。",
+            "aliases": "别名",
+            "usages": "用法",
+            "examples": "例子"
         },
         "ping": {
-            "description": ""
+            "description": "接收来自机器人的ping。"
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "在wiki上封禁指定的用户。",
                 "usages": [
-                    "",
-                    ""
+                    "<用户> <结束时间>",
+                    "<用户> <结束时间> <原因>"
                 ]
             },
-            "blocking": "",
-            "unblocking": "",
-            "unblock_success": "",
-            "already_blocked": "",
-            "not_blocked": "",
-            "error": "",
-            "block_success": "",
+            "blocking": "封禁用户中……",
+            "unblocking": "解封用户中……",
+            "unblock_success": "已成功解封用户。",
+            "already_blocked": "该用户已被封禁！若要解封，您可以使用`--unblock`标记。",
+            "not_blocked": "该用户尚未被封禁！",
+            "error": "{{type}}时出现错误",
+            "block_success": "已成功封禁用户！",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}，您想封禁哪个用户？",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}，应当封禁多长时间？",
+                    "retry": "{{- author}}，这看起来不像是有效的时间欸！"
                 }
             }
         },
         "category": {
             "description": {
-                "content": "",
+                "content": "列出设定的wiki上某分类内的所有页面。",
                 "usages": [
-                    "",
-                    "",
-                    ""
+                    "<分类>",
+                    "--cfd",
+                    "--stub"
                 ]
             },
-            "fetching": "",
-            "category": "",
-            "empty": "",
-            "prompt": ""
+            "fetching": "正在获取分类**{{category}}**内的页面……",
+            "category": "分类",
+            "empty": "分类**{{category}}**为空！",
+            "prompt": "{{- author}}，我应该列出哪个分类的页面？"
         },
         "delete": {
             "description": {
-                "content": "",
+                "content": "删除设定的wiki上的给定页面，允许输入可选的删除原因。",
                 "usages": [
-                    ""
+                    "<页面> [原因]"
                 ]
             },
-            "deleting": "",
-            "success": "",
-            "prompt": ""
+            "deleting": "删除页面中……",
+            "success": "已成功删除页面！",
+            "prompt": "{{- author}}，我应该删除哪个页面？"
         },
         "edit": {
             "description": {
-                "content": "",
+                "content": "在设定的wiki上编辑给定的页面，允许在页面头部或尾部插入内容。",
                 "usages": [
-                    "",
-                    ""
+                    "<页面> <内容> --prepend",
+                    "<页面> <内容> --append"
                 ]
             },
-            "editing": "",
-            "success": "",
+            "editing": "编辑页面中……",
+            "success": "已成功编辑页面内容。",
             "prompt": {
-                "page": "",
-                "content": "",
-                "position": ""
+                "page": "{{- author}}，我应该编辑哪个页面？",
+                "content": "{{- author}}，您想向{{page}}添加什么内容？",
+                "position": "{{- author}}，您是想在{{page}}的页面头部（`prepend`）还是在页面尾部（`append`）插入内容？"
             }
         },
         "move": {
             "description": {
-                "content": "",
+                "content": "在设定的wiki上移动（重命名）单个页面。",
                 "usages": [
-                    ""
+                    "<旧页面名> <新页面名> [-r=原因]"
                 ]
             },
-            "moving": "",
-            "success": "",
+            "moving": "移动页面中……",
+            "success": "已成功移动页面！",
             "prompt": {
-                "old": "",
-                "new": ""
+                "old": "{{- author}}，我应该移动哪个页面？",
+                "new": "{{- author}}，新页面名是什么？"
             }
         },
         "protect": {
             "description": {
-                "content": "",
+                "content": "在wiki上保护给定的页面，允许设置结束时间。",
                 "usages": [
-                    ""
+                    "<页面> <时间> [-r=<原因>]"
                 ]
             },
-            "protecting": "",
-            "success": "",
+            "protecting": "保护页面中……",
+            "success": "已成功保护页面！",
             "prompt": {
-                "page": "",
+                "page": "{{- author}}，我应该保护哪个页面？",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}，应当保护多长时间？",
+                    "retry": "{{- author}}，这看上去不是一个有效的时间欸！"
                 },
                 "usergroup": {
-                    "start": "",
-                    "retry": "",
-                    "sysop": "",
-                    "autoconfirmed": ""
+                    "start": "{{- author}}，应当允许哪些用户组编辑这个页面呢？",
+                    "retry": "{{- author}}，这看上去不是有效的用户组欸！",
+                    "sysop": "`sysop`以设置为仅管理员，或",
+                    "autoconfirmed": "`autoconfirmed`以设置为仅自动确认用户。"
                 }
             }
         },
         "undelete": {
             "description": {
-                "content": "",
+                "content": "在设定的wiki上还原/取消删除给定的页面。",
                 "usages": [
-                    ""
+                    "<页面> <原因>"
                 ]
             },
-            "restoring": "",
-            "success": "",
-            "prompt": ""
+            "restoring": "还原页面中……",
+            "success": "已成功还原页面！",
+            "prompt": "{{- author}}，我应当解除哪个页面的保护？"
         },
         "whoami": {
             "description": {
-                "content": ""
+                "content": "返回当前登录用户的信息。"
             },
-            "loading": "",
-            "logged_in": "",
-            "logged_in_vowel": "",
-            "not_logged_in": ""
+            "loading": "获取信息中……",
+            "logged_in": "已登录为**{{user}}**，编辑数**{{editcount}}**。当前用户组为**{{usergroup}}**。✅",
+            "logged_in_vowel": "已登录为**{{user}}**，编辑数**{{editcount}}**。当前用户组为**{{usergroup}}**。✅",
+            "not_logged_in": "尚未登录。❌"
         },
         "eval": {
             "description": {
-                "content": "",
+                "content": "执行JavaScript代码。",
                 "usages": [
-                    ""
+                    "<代码>"
                 ]
             },
-            "prompt": ""
+            "prompt": "{{- author}}，我要执行什么代码？"
         },
         "ssh": {
             "description": {
-                "content": "",
+                "content": "从Discord执行终端命令。",
                 "usages": [
-                    ""
+                    "<命令>"
                 ]
             },
-            "prompt": "",
-            "long": ""
+            "prompt": "{{- author}}，请输入要运行的命令！",
+            "long": "结果过长而无法发送：{{- link}}"
         }
     },
     "handler": {
         "categories": {
-            "client": "",
-            "owner": "",
-            "utilities": "",
-            "wiki": ""
+            "client": "客户端",
+            "owner": "拥有者",
+            "utilities": "实用工具",
+            "wiki": "Wiki"
         },
         "prompt": {
-            "cancel": "",
-            "cancelled": "",
-            "ended": "",
-            "timeout": ""
+            "cancel": "输入`cancel`以取消命令。",
+            "cancelled": "好的，命令已取消。",
+            "ended": "3次尝试均已失败。命令已取消。",
+            "timeout": "您的响应时间过长，命令已取消。"
         },
         "inhibitors": {
             "wiki_action": {
-                "no_wiki": "",
-                "no_roles": "",
-                "need_roles": "",
-                "no_credentials": ""
+                "no_wiki": "此服务器尚未设置wiki！",
+                "no_roles": "此命令需要设置并授予用户以对应的身份组以防止滥用。",
+                "need_roles": "您需要位于以下身份组中才能使用此命令。",
+                "no_credentials": "我尚未登录到wiki！"
             }
         },
         "listeners": {
             "missing_permissions": {
-                "user_missing": "",
-                "client_missing": ""
+                "user_missing": "您需要以下权限以运行此命令：",
+                "client_missing": "我缺少以下权限来执行此命令："
             }
         }
     },
     "plugins": {
         "rc_script": {
-            "summary": "",
-            "error": ""
+            "summary": "通过Discord操作 - {{user}}",
+            "error": "出现错误：{{error}}"
         },
         "reports": {
-            "missing": "",
-            "user": ""
+            "missing": "{{- user}}，反应指向的消息中找不到{{type}}链接。",
+            "user": "用户"
         }
     },
     "general": {
-        "no_reason": "",
-        "no_summary": "",
-        "more": ""
+        "no_reason": "没有提供原因",
+        "no_summary": "没有提供摘要",
+        "more": "更多"
     }
 }
