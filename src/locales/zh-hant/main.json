@@ -1,205 +1,205 @@
 {
-  "commands": {
-    "help": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "list": "",
-      "more_info": "",
-      "command_help": "",
-      "no_description": "",
-      "aliases": "",
-      "usages": "",
-      "examples": ""
-    },
-    "ping": {
-      "description": ""
-    },
-    "block": {
-      "description": {
-        "content": "",
-        "usages": [
-          "",
-          ""
-        ]
-      },
-      "blocking": "",
-      "unblocking": "",
-      "unblock_success": "",
-      "already_blocked": "",
-      "not_blocked": "",
-      "error": "",
-      "block_success": "",
-      "prompt": {
-        "user": "",
-        "expiry": {
-          "start": "",
-          "retry": ""
-        }
-      }
-    },
-    "category": {
-      "description": {
-        "content": "",
-        "usages": [
-          "",
-          "",
-          ""
-        ]
-      },
-      "fetching": "",
-      "category": "",
-      "empty": "",
-      "prompt": ""
-    },
-    "delete": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "deleting": "",
-      "success": "",
-      "prompt": ""
-    },
-    "edit": {
-      "description": {
-        "content": "",
-        "usages": [
-          "",
-          ""
-        ]
-      },
-      "editing": "",
-      "success": "",
-      "prompt": {
-        "page": "",
-        "content": "",
-        "position": ""
-      }
-    },
-    "move": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "moving": "",
-      "success": "",
-      "prompt": {
-        "old": "",
-        "new": ""
-      }
-    },
-    "protect": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "protecting": "",
-      "success": "",
-      "prompt": {
-        "page": "",
-        "expiry": {
-          "start": "",
-          "retry": ""
+    "commands": {
+        "help": {
+            "description": {
+                "content": "傳送有關機器人指令的資訊。",
+                "usages": [
+                    "[指令]"
+                ]
+            },
+            "list": "所有可用指令的清單。",
+            "more_info": "如需特定指令的詳細資訊，請傳送 `{{prefix}}{{alias}} <指令>` 。",
+            "command_help": "{{command}}指令說明",
+            "no_description": "未提供描述。",
+            "aliases": "別名",
+            "usages": "用法",
+            "examples": "範例"
         },
-        "usergroup": {
-          "start": "",
-          "retry": "",
-          "sysop": "",
-          "autoconfirmed": ""
+        "ping": {
+            "description": "接收來自機器人的ping。"
+        },
+        "block": {
+            "description": {
+                "content": "封鎖wiki上指定的使用者。",
+                "usages": [
+                    "<使用者> <結束時間>",
+                    "<使用者> <結束時間> <原因>"
+                ]
+            },
+            "blocking": "正在封鎖使用者……",
+            "unblocking": "正在解封使用者……",
+            "unblock_success": "已解封使用者。",
+            "already_blocked": "該使用者早已被封鎖！若要解封，您可以使用 `--unblock` 旗標。",
+            "not_blocked": "該使用者尚未被封鎖！",
+            "error": "{{type}}時發生錯誤",
+            "block_success": "已封鎖使用者！",
+            "prompt": {
+                "user": "{{- author}}，您希望封鎖哪位使用者？",
+                "expiry": {
+                    "start": "{{- author}}，應封鎖多長時間？",
+                    "retry": "{{- author}}，這似乎不是有效的時間！"
+                }
+            }
+        },
+        "category": {
+            "description": {
+                "content": "列出已設定的wiki上指定分類內的所有頁面。",
+                "usages": [
+                    "<分類>",
+                    "--cfd",
+                    "--stub"
+                ]
+            },
+            "fetching": "正在取得分類**{{category}}**內的頁面……",
+            "category": "分類",
+            "empty": "分類**{{category}}**為空！",
+            "prompt": "{{- author}}，應列出哪個分類內的頁面？"
+        },
+        "delete": {
+            "description": {
+                "content": "刪除已設定的wiki上的指定頁面，可輸入刪除原因（選擇性）。",
+                "usages": [
+                    "<頁面> [原因]"
+                ]
+            },
+            "deleting": "正在刪除頁面……",
+            "success": "已刪除頁面！",
+            "prompt": "{{- author}}，應刪除哪個頁面？"
+        },
+        "edit": {
+            "description": {
+                "content": "編輯已設定的wiki上的指定頁面，提供在原內容前方或後方插入內容的選項。",
+                "usages": [
+                    "<頁面> <內容> --prepend",
+                    "<頁面> <內容> --append"
+                ]
+            },
+            "editing": "正在編輯頁面……",
+            "success": "已編輯頁面內容。",
+            "prompt": {
+                "page": "{{- author}}，應編輯哪個頁面？",
+                "content": "{{- author}}，應對{{page}}新增什麼內容？",
+                "position": "{{- author}}，您是否希望在{{page}}的原內容前方插入新內容（ `prepend` ）或在其後方插入新內容（ `append` ）？"
+            }
+        },
+        "move": {
+            "description": {
+                "content": "在已設定的wiki上移動（重新命名）單個頁面。",
+                "usages": [
+                    "<原頁面名稱> <新頁面名稱> [-r=原因]"
+                ]
+            },
+            "moving": "正在移動頁面……",
+            "success": "已移動頁面！",
+            "prompt": {
+                "old": "{{- author}}，應移動哪個頁面？",
+                "new": "{{- author}}，新頁面名稱是什麼？"
+            }
+        },
+        "protect": {
+            "description": {
+                "content": "保護wiki上的頁面，提供設定結束時間（選擇性）的選項。",
+                "usages": [
+                    "<頁面> <時間> [-r=<原因>]"
+                ]
+            },
+            "protecting": "正在保護頁面……",
+            "success": "已保護頁面！",
+            "prompt": {
+                "page": "{{- author}}，應保護哪個頁面？",
+                "expiry": {
+                    "start": "{{- author}}，應保護多長時間？",
+                    "retry": "{{- author}}，這似乎不是有效的時間！"
+                },
+                "usergroup": {
+                    "start": "{{- author}}，應允許哪些使用者群組編輯這個頁面？",
+                    "retry": "{{- author}}，這似乎不是有效的使用者群組！",
+                    "sysop": "`sysop` 以設定為僅管理員，或",
+                    "autoconfirmed": "`autoconfirmed` 以設定為僅自動確認使用者。"
+                }
+            }
+        },
+        "undelete": {
+            "description": {
+                "content": "在已設定的wiki上還原/恢復特定的頁面。",
+                "usages": [
+                    "<頁面> <原因>"
+                ]
+            },
+            "restoring": "正在還原頁面……",
+            "success": "已還原頁面！",
+            "prompt": "{{- author}}，應解除哪個頁面的保護？"
+        },
+        "whoami": {
+            "description": {
+                "content": "回傳目前登入使用者的資訊。"
+            },
+            "loading": "正在取得資訊……",
+            "logged_in": "已以**{{user}}**的身分登入，編輯次數為**{{editcount}}**。目前所屬使用者群組為**{{usergroup}}**。 ✅",
+            "logged_in_vowel": "已以**{{user}}**的身分登入，編輯次數為**{{editcount}}**。目前所屬使用者群組為**{{usergroup}}**。 ✅",
+            "not_logged_in": "尚未登入。 ❌"
+        },
+        "eval": {
+            "description": {
+                "content": "執行JavaScript程式碼。",
+                "usages": [
+                    "<程式碼>"
+                ]
+            },
+            "prompt": "{{- author}}，應執行什麼程式碼？"
+        },
+        "ssh": {
+            "description": {
+                "content": "從Discord執行終端命令。",
+                "usages": [
+                    "<命令>"
+                ]
+            },
+            "prompt": "{{- author}}，請輸入要執行的命令！",
+            "long": "結果過長而無法傳送：{{- link}}"
         }
-      }
     },
-    "undelete": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "restoring": "",
-      "success": "",
-      "prompt": ""
+    "handler": {
+        "categories": {
+            "client": "客戶端",
+            "owner": "擁有者",
+            "utilities": "實用工具",
+            "wiki": "wiki"
+        },
+        "prompt": {
+            "cancel": "輸入 `cancel` 以取消命令。",
+            "cancelled": "好的。已取消命令。",
+            "ended": "3次嘗試均已失敗。已取消命令。",
+            "timeout": "您的回應時間過長，已取消命令。"
+        },
+        "inhibitors": {
+            "wiki_action": {
+                "no_wiki": "尚未為此伺服器設定wiki！",
+                "no_roles": "此指令需要設定並授予使用者對應的身分組以防濫用。",
+                "need_roles": "您需要屬於以下身分組才能使用此指令。",
+                "no_credentials": "尚未登入至wiki機器人！"
+            }
+        },
+        "listeners": {
+            "missing_permissions": {
+                "user_missing": "您需要以下權限以執行此指令：",
+                "client_missing": "缺少以下執行此指令所需的權限："
+            }
+        }
     },
-    "whoami": {
-      "description": {
-        "content": ""
-      },
-      "loading": "",
-      "logged_in": "",
-      "logged_in_vowel": "",
-      "not_logged_in": ""
+    "plugins": {
+        "rc_script": {
+            "summary": "透過Discord操作 - {{user}}",
+            "error": "發生錯誤：{{error}}"
+        },
+        "reports": {
+            "missing": "{{- user}}，無法在反應指向的訊息找到{{type}}連結。",
+            "user": "使用者"
+        }
     },
-    "eval": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "prompt": ""
-    },
-    "ssh": {
-      "description": {
-        "content": "",
-        "usages": [
-          ""
-        ]
-      },
-      "prompt": "",
-      "long": ""
+    "general": {
+        "no_reason": "未提供原因",
+        "no_summary": "未提供摘要",
+        "more": "更多"
     }
-  },
-  "handler": {
-    "categories": {
-      "client": "",
-      "owner": "",
-      "utilities": "",
-      "wiki": ""
-    },
-    "prompt": {
-      "cancel": "",
-      "cancelled": "",
-      "ended": "",
-      "timeout": ""
-    },
-    "inhibitors": {
-      "wiki_action": {
-        "no_wiki": "",
-        "no_roles": "",
-        "need_roles": "",
-        "no_credentials": ""
-      }
-    },
-    "listeners": {
-      "missing_permissions": {
-        "user_missing": "",
-        "client_missing": ""
-      }
-    }
-  },
-  "plugins": {
-    "rc_script": {
-      "summary": "",
-      "error": ""
-    },
-    "reports": {
-      "missing": "",
-      "user": ""
-    }
-  },
-  "general": {
-    "no_reason": "",
-    "no_summary": "",
-    "more": ""
-  }
 }
