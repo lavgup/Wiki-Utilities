@@ -164,7 +164,7 @@
             "client": "客户端",
             "owner": "拥有者",
             "utilities": "实用工具",
-            "wiki": "Wiki"
+            "wiki": "wiki"
         },
         "prompt": {
             "cancel": "输入`cancel`以取消命令。",
