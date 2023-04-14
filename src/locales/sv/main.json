@@ -2,83 +2,83 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "Skickar information om bottens kommandon.",
                 "usages": [
-                    ""
+                    "[kommando]"
                 ]
             },
-            "list": "",
-            "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "list": "En lista över alla tillgängliga kommandon.",
+            "more_info": "För mer information om ett specifikt kommando, skicka `{{prefix}}{{alias}} <kommando>`.",
+            "command_help": "{{command}} Kommandohjälp",
+            "no_description": "Ingen beskrivning tillhandahålls.",
+            "aliases": "Alias",
+            "usages": "Användningar",
+            "examples": "Exempel"
         },
         "ping": {
-            "description": ""
+            "description": "Får ping av botten."
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "Blockerar en specifik användare på wikin.",
                 "usages": [
-                    "",
-                    ""
+                    "<användare> <utgångsdatum>",
+                    "<användare> <utgångsdatum> <orsak>"
                 ]
             },
-            "blocking": "",
-            "unblocking": "",
-            "unblock_success": "",
+            "blocking": "Blockerar användare…",
+            "unblocking": "Avblockerar användare…",
+            "unblock_success": "Användaren har avblockerats.",
             "already_blocked": "",
-            "not_blocked": "",
-            "error": "",
-            "block_success": "",
+            "not_blocked": "Den användaren är inte blockerad!",
+            "error": "Ett fel uppstod när {{type}}",
+            "block_success": "Användaren har blockerats!",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}, vilken användare vill du blockera?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, hur länge ska jag blockera den här användaren?",
+                    "retry": "{{- author}}, det där ser inte ut som en giltig tid!"
                 }
             }
         },
         "category": {
             "description": {
-                "content": "",
+                "content": "Listar alla artiklar i en angiven kategori på den inställda wikin.",
                 "usages": [
-                    "",
-                    "",
-                    ""
+                    "<kategori>",
+                    "--cfd",
+                    "--stub"
                 ]
             },
-            "fetching": "",
-            "category": "",
-            "empty": "",
-            "prompt": ""
+            "fetching": "Hämtar artiklar i kategorin **{{category}}**…",
+            "category": "Kategori",
+            "empty": "**{{category}}**-kategorin är tom!",
+            "prompt": "{{- author}}, vilken kategori ska jag lista sidorna i?"
         },
         "delete": {
             "description": {
                 "content": "",
                 "usages": [
-                    ""
+                    "<artikel> [orsak]"
                 ]
             },
-            "deleting": "",
-            "success": "",
-            "prompt": ""
+            "deleting": "Tar bort artikeln…",
+            "success": "Artikeln har tagits bort!",
+            "prompt": "{{- author}}, vilken artikel ska jag ta bort?"
         },
         "edit": {
             "description": {
                 "content": "",
                 "usages": [
-                    "",
-                    ""
+                    "<artikel> <innehåll> --prepend",
+                    "<artikel> <innehåll> --append"
                 ]
             },
-            "editing": "",
-            "success": "",
+            "editing": "Redigerar artikel…",
+            "success": "Innehållet i artikeln har redigerats.",
             "prompt": {
-                "page": "",
-                "content": "",
+                "page": "{{- author}}, vilken artikel ska jag redigera?",
+                "content": "{{- author}}, vad vill du lägga till i {{page}}?",
                 "position": ""
             }
         },
@@ -86,44 +86,44 @@
             "description": {
                 "content": "",
                 "usages": [
-                    ""
+                    "<gammal_artikel> <ny_artikel> [-r=anledning]"
                 ]
             },
-            "moving": "",
-            "success": "",
+            "moving": "Flyttar artikel…",
+            "success": "Artikeln har flyttats!",
             "prompt": {
-                "old": "",
-                "new": ""
+                "old": "{{- author}}, vilken artikel ska jag flytta?",
+                "new": "{{- author}}, vad ska artikelns nya namn vara?"
             }
         },
         "protect": {
             "description": {
-                "content": "",
+                "content": "Skyddar en given artikel på wikin med ett valfritt utgångsdatum.",
                 "usages": [
-                    ""
+                    "<artikel> <tid> [-r=<orsak>]"
                 ]
             },
-            "protecting": "",
-            "success": "",
+            "protecting": "Skyddar artikel…",
+            "success": "Artikeln är skyddad!",
             "prompt": {
-                "page": "",
+                "page": "{{- author}}, vilken artikel ska jag skydda?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, hur länge ska den här artikeln skyddas?",
+                    "retry": "{{- author}}, det där ser inte ut som en giltig tid!"
                 },
                 "usergroup": {
-                    "start": "",
-                    "retry": "",
-                    "sysop": "",
-                    "autoconfirmed": ""
+                    "start": "{{- author}}, vilken användargrupp ska tillåtas redigera den här artikeln?",
+                    "retry": "{{- author}}, det där ser inte ut som en giltig användargrupp!",
+                    "sysop": "\"sysop\" för endast administratörer, eller",
+                    "autoconfirmed": "\"autoconfirmed\" för endast autobekräftade användare."
                 }
             }
         },
         "undelete": {
             "description": {
-                "content": "",
+                "content": "Återställer en given artikel på den inställda wikin.",
                 "usages": [
-                    ""
+                    "<artikel> <orsak>"
                 ]
             },
             "restoring": "",
