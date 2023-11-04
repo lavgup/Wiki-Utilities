@@ -2,42 +2,42 @@
     "commands": {
         "help": {
             "description": {
-                "content": "",
+                "content": "Envoie des informations sur les commandes du robot.",
                 "usages": [
-                    ""
+                    "[command]"
                 ]
             },
-            "list": "",
-            "more_info": "",
-            "command_help": "",
-            "no_description": "",
-            "aliases": "",
-            "usages": "",
-            "examples": ""
+            "list": "Une liste de toutes les commandes disponibles.",
+            "more_info": "Pour plus d'informations sur une commande spécifique, envoyez `{{prefix}}{{alias}} <command>`.",
+            "command_help": "{{command}} Aide à la commande",
+            "no_description": "Aucune description n'est fournie.",
+            "aliases": "Alias",
+            "usages": "Usages",
+            "examples": "Exemples"
         },
         "ping": {
-            "description": ""
+            "description": "Récupère le ping du bot."
         },
         "block": {
             "description": {
                 "content": "",
                 "usages": [
-                    "",
-                    ""
+                    "<user> <expiry>",
+                    "<user> <expiry> <reason>"
                 ]
             },
             "blocking": "",
-            "unblocking": "",
-            "unblock_success": "",
-            "already_blocked": "",
-            "not_blocked": "",
+            "unblocking": "Déblocage de l'utilisateur…",
+            "unblock_success": "Utilisateur débloqué avec succès.",
+            "already_blocked": "Cet utilisateur est déjà bloqué ! Pour le débloquer, vous pouvez passer le drapeau `--unblock`.",
+            "not_blocked": "Cet utilisateur n'est pas bloqué !",
             "error": "",
-            "block_success": "",
+            "block_success": "Utilisateur bloqué avec succès !",
             "prompt": {
-                "user": "",
+                "user": "{{- author}}, quel utilisateur souhaitez-vous bloquer ?",
                 "expiry": {
-                    "start": "",
-                    "retry": ""
+                    "start": "{{- author}}, combien de temps dois-je bloquer cet utilisateur ?",
+                    "retry": "{{- author}}, cela ne semble pas être un temps valide !"
                 }
             }
         },
