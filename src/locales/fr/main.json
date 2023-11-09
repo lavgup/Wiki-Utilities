@@ -20,7 +20,7 @@
         },
         "block": {
             "description": {
-                "content": "",
+                "content": "Bloque un utilisateur donné sur le wiki.",
                 "usages": [
                     "<user> <expiry>",
                     "<user> <expiry> <reason>"
@@ -31,7 +31,7 @@
             "unblock_success": "Utilisateur débloqué avec succès.",
             "already_blocked": "Cet utilisateur est déjà bloqué ! Pour le débloquer, vous pouvez passer le drapeau `--unblock`.",
             "not_blocked": "Cet utilisateur n'est pas bloqué !",
-            "error": "",
+            "error": "Une erreur est survenue lors de {{type}}",
             "block_success": "Utilisateur bloqué avec succès !",
             "prompt": {
                 "user": "{{- author}}, quel utilisateur souhaitez-vous bloquer ?",
@@ -45,7 +45,7 @@
             "description": {
                 "content": "",
                 "usages": [
-                    "",
+                    "<catégorie>",
                     "",
                     ""
                 ]
